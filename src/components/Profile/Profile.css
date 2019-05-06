@@ -1,0 +1,47 @@
+.profile-form {
+    border: .1rem solid black;
+    width: 60%;
+    height: 25rem;
+    padding: 5rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+.save-button {
+    font-size: 1rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: .8rem 1.8rem .8rem 1.8rem;
+    cursor: pointer;
+    border:none;
+}
+.sigarra-button {
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(134, 18, 18);
+    color: white;
+    padding: .8rem 4rem .8rem 4rem;
+    cursor: pointer;
+    border:none;
+}
+.linkedin-button {
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(0, 162, 255);
+    color: white;
+    padding: .8rem 4rem .8rem 4rem;
+    cursor: pointer;
+    border:none;
+}
+.login-button:hover {
+    opacity: .7;
+}
+.sigarra-button:hover {
+    opacity: .7;
+}
+.linkedin-button:hover {
+    opacity: .7;
+}
+#button li{
+    margin-bottom:2rem;
+}

@@ -1,0 +1,49 @@
+.signup-form {
+    border: .1rem solid black;
+    width: 60%;
+    height: 20rem;
+    padding: 5rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.login-button {
+    font-size: 1rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: .8rem 1.8rem .8rem 1.8rem;
+    cursor: pointer;
+    margin: 8rem
+}
+
+.login-button:hover {
+    opacity: .7;
+}
+
+.info-text {
+    opacity: .3;
+    margin-top: 2rem;
+}
+.login {
+    text-align: center
+}
+.button {
+    margin-top: 1cm 
+}
+.password_text{
+    line-break: normal
+}
+h5 {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+h3{
+    margin:0;
+    padding: 0;
+}

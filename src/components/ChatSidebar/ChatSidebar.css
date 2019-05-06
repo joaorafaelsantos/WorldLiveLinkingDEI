@@ -1,0 +1,13 @@
+.chat-sidebar-container {
+  flex: 30%;
+  margin: 0rem 1rem;
+}
+
+.chat-sidebar-item {
+  margin: .5rem 0rem;
+}
+
+.chat-sidebar-item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
