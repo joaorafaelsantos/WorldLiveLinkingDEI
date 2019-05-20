@@ -6,15 +6,15 @@ import Button from '@material-ui/core/Button';
 
 const Profile = ({ onClick }) => (
     <div style={{background:'transparent'}}>
-    <div style={{width:262,display:'flex',margin:'40px auto'}}>
-      <Button style={{ marginRight:20,width:113,fontSize:10,padding:0 }} variant="contained" color="secondary">
+    <div style={{width:400,display:'flex',margin:'40px auto'}}>
+      <Button style={{ marginRight:20,width:183,fontSize:13,padding:'9px 12px' }} variant="contained" color="secondary">
         Import from Sigarra
       </Button>
-      <Button style={{ width:113,fontSize:9 }} variant="contained" color="primary">
+      <Button style={{ width:183,fontSize:13,padding:'9px 12px' }} variant="contained" color="primary">
         Import from LinkedIn
       </Button>
     </div>
-    <form style={{width:262,display:'flex',flexDirection:'column',
+    <form style={{width:400,display:'flex',flexDirection:'column',
         justifyContent: 'center',margin:'0 auto'}} noValidate autoComplete="off">
         <TextField
           id="standard-full-width"
