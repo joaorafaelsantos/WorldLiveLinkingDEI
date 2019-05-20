@@ -1,35 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Profile.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const Profile = ({ onClick }) => (
-    <div className="profile-form">
-        <div className="form">
-            <div className="menu">
-            <ul>
-                <li><h3> Personal information</h3></li>
-                <li><h5 className="login_text">Name</h5></li>
-                <li><input type="text"></input></li>
-                <li><h5 className="login_text">Location</h5></li>
-                <li><input type="text"></input></li>
-                <li><h5 className="login_text">Job Description</h5></li>
-                <li><input type="text"></input></li>
-                <li><h5 className="login_text">Company</h5></li>
-                <li><input type="text"></input></li>
-                <li><h5 className="login_text">Degree</h5></li>
-                <li><input type="text"></input></li>
-            </ul>    
-            </div>
-            <div id= "button" className="button">
-            <ul className="button_list">
-                <li><a className="save-button" onClick={onClick}>Save</a></li>
-                <li><a className="sigarra-button" onClick={onClick}>Import from Sigarra</a></li>
-                <li><a className="linkedin-button" onClick={onClick}>Import from LinkedIn</a></li>
-                <p className="info-text">This will simulate an import of data event.</p>
-            </ul>
-            </div>
-        </div>   
+    <div style={{background:'transparent'}}>
+    <div style={{width:262,display:'flex',margin:'40px auto'}}>
+      <Button style={{ marginRight:20,width:113,fontSize:10,padding:0 }} variant="contained" color="secondary">
+        Import from Sigarra
+      </Button>
+      <Button style={{ width:113,fontSize:9 }} variant="contained" color="primary">
+        Import from LinkedIn
+      </Button>
     </div>
+    <form style={{width:262,display:'flex',flexDirection:'column',
+        justifyContent: 'center',margin:'0 auto'}} noValidate autoComplete="off">
+        <TextField
+          id="standard-full-width"
+          style={{ margin: 8 }}
+          placeholder="Name"
+          margin="normal"
+        />
+        <TextField
+          id="standard-full-width"
+          style={{ margin: 8 }}
+          placeholder="Location"
+          margin="normal"
+        />
+         <TextField
+          id="standard-full-width"
+          style={{ margin: 8 }}
+          placeholder="Job description"
+          margin="normal"
+        />
+         <TextField
+          id="standard-full-width"
+          style={{ margin: 8 }}
+          placeholder="Company"
+          margin="normal"
+        />
+         <TextField
+          id="standard-full-width"
+          style={{ margin: 8 }}
+          placeholder="Degree"
+          margin="normal"
+        />
+        <Button type="Submit" style={{ marginTop: 40 }} variant="contained" color="secondary">
+        Submit
+      </Button>
+    </form>
+</div>
 );
 
 Profile.propTypes = {
