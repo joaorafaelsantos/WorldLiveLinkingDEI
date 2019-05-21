@@ -1,29 +1,70 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import './Navbar.css';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
-const Navbar = ({ isAuth }) => (
-    <main className="navbar">
-        <h1 className="navbar-title"><Link to="/">WorldLiveLinking</Link></h1>
-        <div className="menu">
-            <ul className="menu-list">
-                {isAuth ?
-                    <Fragment>
-                        <li className="menu-item"> <Link to="/map">Map</Link> </li>
-                        <li className="menu-item"> <Link to="/chat">Chat</Link> </li>
-                        <li className="menu-item"> <Link to="/profile">Profile</Link> </li>
-                    </Fragment>
-                    :
-                    <Fragment>
-                        <li className="menu-item"> <Link to="/signin">Sign In</Link> </li>
-                        <li className="menu-item"> <Link to="/signup">Sign Up</Link> </li>
-                    </Fragment>
-                }
-            </ul>
-        </div>
-    </main>
-);
+class Navbar extends Component {
+    state = {
+        anchorEl: null,
+    };
+    
+    handleClick = event => {
+      this.setState({ anchorEl: event.currentTarget });
+    };
+    
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+    render() {
+        const {isAuth} = this.props;
+        const { anchorEl } = this.state;
+      return (
+        <AppBar position="static">
+          <Toolbar style={{display:'flex',justifyContent: 'space-between'}}>
+          <IconButton color="inherit" aria-label="Menu">
+              WorldLiveLinking
+          </IconButton>
+          {
+            isAuth ?
+            <div>
+             <div style = {{display:'flex',alignItems:'center'}}>
+                <AccountCircle />
+                <Button color="inherit"
+                    aria-owns={anchorEl ? 'simple-menu' : undefined}
+                    aria-haspopup="true"
+                    onClick={this.handleClick}
+                    >
+                    Joao Santos
+                </Button>
+              </div>
+          <Menu styles={{top: '38px'}}
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>My Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          </Menu>
+            </div>
+            :
+            <div style={{display:'flex'}}>
+              <Button color="inherit">Sign In</Button>
+              <Button color="inherit">Sign Up</Button>
+            </div>
+          }
+          
+          </Toolbar>
+        </AppBar>
+    );
+    }
+  }  
 
 Navbar.propTypes = {
     isAuth: PropTypes.bool.isRequired,
