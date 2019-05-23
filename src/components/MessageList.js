@@ -33,9 +33,13 @@ class MessageList extends Component {
     let messageNodes = this.state.messages.map((message) => {
       return (
         <div className="card">
-          <div className="card-content">
-            <Message message = {message.message} />
-
+          <div className="container img chat-message-write">
+          <div className="fixed">
+          <img src={message.profilePicUrl}></img>
+          </div>
+          <div className="flex-item">
+          <Message message = {message.message} />
+          </div>
           </div>
         </div>
       )

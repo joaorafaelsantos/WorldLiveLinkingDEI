@@ -9,7 +9,7 @@ class MessageBox extends Component {
     this.onKeyup = this.onKeyup.bind(this);
     this.state = {
       message: '',
-      image: ''
+      profilePicUrl: ''
     };
   }
   onChange(e){
@@ -23,7 +23,7 @@ class MessageBox extends Component {
       let dbCon = this.props.db.database().ref('/messages');
       dbCon.push({
         message: trim(e.target.value),
-        image: 'image.jpg'
+        profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg'
       });
       this.setState({
         message: ''
@@ -32,16 +32,18 @@ class MessageBox extends Component {
   }
   render() {
     return (
-      <form>
-        <textarea
-            className="textarea"
-            placeholder="Type a message"
-            cols="100"
-            onChange={this.onChange}
-            onKeyUp={this.onKeyup}
-            value={this.state.message}>
+      <div className="card">
+        <form>
+          <textarea
+              className="container"
+              placeholder="Type a message"
+              cols="100"
+              onChange={this.onChange}
+              onKeyUp={this.onKeyup}
+              value={this.state.message}>
           </textarea>
-      </form>
+        </form>
+      </div>
     )
   }
 }

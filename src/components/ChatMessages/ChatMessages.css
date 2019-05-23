@@ -9,6 +9,13 @@
   padding: 10px;
   margin: 10px 0;
   width: 65%;
+  display:flex;
+}
+.fixed{
+  width: 300px;
+}
+.flex-item{
+  flex-grow: 1;
 }
 
 .container-self {
