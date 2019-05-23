@@ -12,7 +12,7 @@
   display:flex;
 }
 .fixed{
-  width: 300px;
+  width: 45px;
 }
 .flex-item{
   flex-grow: 1;
