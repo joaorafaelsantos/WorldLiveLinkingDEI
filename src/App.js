@@ -8,7 +8,10 @@ import SignUpContainer from "./containers/SignUpContainer";
 import ProfileContainer from "./containers/ProfileContainer";
 import "./App.css";
 
+
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">
