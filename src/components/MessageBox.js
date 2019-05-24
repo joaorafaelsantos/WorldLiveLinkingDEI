@@ -18,12 +18,24 @@ class MessageBox extends Component {
       });
   }
   onKeyup(e){
+    var fromUserId = 1;
+    var toUserId = 2;
+    if(fromUserId > toUserId){
+      var chatRoomId = fromUserId + '_' + toUserId;
+    }else{
+
+      var chatRoomId = toUserId + '_' + fromUserId;
+
+    }
+
+
     if(e.keyCode === 13 && trim(e.target.value) !== ''){
       e.preventDefault();
       let dbCon = this.props.db.database().ref('/messages');
       dbCon.push({
         message: trim(e.target.value),
-        profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg'
+        profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
+        chatRoom: chatRoomId,
       });
       this.setState({
         message: ''

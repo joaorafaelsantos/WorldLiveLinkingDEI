@@ -8,7 +8,13 @@ class MessageList extends Component {
     this.state = {
       messages: []
     };
-    let app = this.props.db.database().ref('messages');
+
+    var chatRoomId = '3_1';
+
+    let app = this.props.db.database().ref('messages').orderByChild('chatRoom').equalTo(chatRoomId);
+
+
+
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
@@ -32,6 +38,7 @@ class MessageList extends Component {
   render() {
     let messageNodes = this.state.messages.map((message) => {
       return (
+        
         <div className="card">
           <div className="container img chat-message-write">
           <div className="fixed">
