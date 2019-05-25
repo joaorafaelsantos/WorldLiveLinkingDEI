@@ -8,11 +8,29 @@ import SignUpContainer from "./containers/SignUpContainer";
 import ProfileContainer from "./containers/ProfileContainer";
 import "./App.css";
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+     primary: {
+        light: '#fff',
+        main: '#F44336',
+        dark: '#000'
+     },
+     secondary: {
+       main: '#2196F3',
+     },
+  },
+  typography: { 
+     useNextVariants: true
+  }
+});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
         <NavbarContainer />
         <div className="App-router">
           <Route exact path="/" component={SignInContainer}/>
@@ -22,8 +40,8 @@ class App extends Component {
           <Route path="/map" component={MapContainer}/>
           <Route path="/chat" component={ChatContainer}/>
         </div>
-
       </div>
+      </MuiThemeProvider>
     );
   }
 }
