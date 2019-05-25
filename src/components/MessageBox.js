@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import trim from 'trim';
+import MessageList from '../components/MessageList';
+
+
+import Firebase from '../containers/FireBaseConfig';
 
 class MessageBox extends Component {
 
@@ -13,10 +17,10 @@ class MessageBox extends Component {
     };
   }
   onChange(e){
-      this.setState({
-        message: e.target.value
-      });
-  }
+    this.setState({
+      message: e.target.value
+    });
+}
   onKeyup(e){
     var fromUserId = 1;
     var toUserId = 2;
@@ -52,6 +56,7 @@ class MessageBox extends Component {
   }
   render() {
     return (
+
       <div className="card">
         <form>
           <textarea
