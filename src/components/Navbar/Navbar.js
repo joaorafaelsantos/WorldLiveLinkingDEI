@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     state = {
@@ -25,15 +26,21 @@ class Navbar extends Component {
         const {isAuth} = this.props;
         const { anchorEl } = this.state;
       return (
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar style={{display:'flex',justifyContent: 'space-between'}}>
           <IconButton color="inherit" aria-label="Menu">
-              WorldLiveLinking
+          <Link to="/" className="navbar-link">WorldLiveLinking</Link>
           </IconButton>
           {
             isAuth ?
             <div>
              <div style = {{display:'flex',alignItems:'center'}}>
+             <Button color="inherit">
+              <Link to="/map" className="navbar-link">Map</Link>
+              </Button>
+              <Button color="inherit">
+              <Link to="/chat" className="navbar-link">Chat</Link>
+              </Button>
                 <AccountCircle />
                 <Button color="inherit"
                     aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -49,14 +56,20 @@ class Navbar extends Component {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
-            <MenuItem onClick={this.handleClose}>My Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>
+              <Link to="/profile" className="navbar-link navbar-menu__link">My Profile</Link>
+              </MenuItem>
             <MenuItem onClick={this.handleClose}>Logout</MenuItem>
           </Menu>
             </div>
             :
             <div style={{display:'flex'}}>
-              <Button color="inherit" to="/signin">Sign In</Button>
-              <Button color="inherit" to="/signup">Sign Up</Button>
+              <Button color="inherit">
+              <Link to="/signin" className="navbar-link">Sign In</Link>
+              </Button>
+              <Button color="inherit">
+              <Link to="/signup" className="navbar-link">Sign Up</Link>
+              </Button>
             </div>
           }
           
