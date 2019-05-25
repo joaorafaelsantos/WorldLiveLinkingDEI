@@ -2,3 +2,7 @@
     text-decoration: none;
     color: white;
 }
+
+.navbar-menu__link {
+    color: #F44336;
+}

@@ -35,6 +35,12 @@ class Navbar extends Component {
             isAuth ?
             <div>
              <div style = {{display:'flex',alignItems:'center'}}>
+             <Button color="inherit">
+              <Link to="/map" className="navbar-link">Map</Link>
+              </Button>
+              <Button color="inherit">
+              <Link to="/chat" className="navbar-link">Chat</Link>
+              </Button>
                 <AccountCircle />
                 <Button color="inherit"
                     aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -51,7 +57,7 @@ class Navbar extends Component {
             onClose={this.handleClose}
           >
             <MenuItem onClick={this.handleClose}>
-              <Link to="/profile" className="navbar-link">My Profile</Link>
+              <Link to="/profile" className="navbar-link navbar-menu__link">My Profile</Link>
               </MenuItem>
             <MenuItem onClick={this.handleClose}>Logout</MenuItem>
           </Menu>
