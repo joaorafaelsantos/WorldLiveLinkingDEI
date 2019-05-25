@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     state = {
@@ -25,10 +26,10 @@ class Navbar extends Component {
         const {isAuth} = this.props;
         const { anchorEl } = this.state;
       return (
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar style={{display:'flex',justifyContent: 'space-between'}}>
           <IconButton color="inherit" aria-label="Menu">
-              WorldLiveLinking
+          <Link to="/" className="navbar-link">WorldLiveLinking</Link>
           </IconButton>
           {
             isAuth ?
@@ -49,14 +50,20 @@ class Navbar extends Component {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
-            <MenuItem onClick={this.handleClose}>My Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>
+              <Link to="/profile" className="navbar-link">My Profile</Link>
+              </MenuItem>
             <MenuItem onClick={this.handleClose}>Logout</MenuItem>
           </Menu>
             </div>
             :
             <div style={{display:'flex'}}>
-              <Button color="inherit">Sign In</Button>
-              <Button color="inherit">Sign Up</Button>
+              <Button color="inherit">
+              <Link to="/signin" className="navbar-link">Sign In</Link>
+              </Button>
+              <Button color="inherit">
+              <Link to="/signup" className="navbar-link">Sign Up</Link>
+              </Button>
             </div>
           }
           
