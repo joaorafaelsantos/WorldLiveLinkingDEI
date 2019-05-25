@@ -32,11 +32,19 @@ class MessageBox extends Component {
     if(e.keyCode === 13 && trim(e.target.value) !== ''){
       e.preventDefault();
       let dbCon = this.props.db.database().ref('/messages');
+      let dbCon2 = this.props.db.database().ref('/alivechat');
       dbCon.push({
         message: trim(e.target.value),
         profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
         chatRoom: chatRoomId,
       });
+      dbCon2.push({
+        message: trim(e.target.value),
+        profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
+        chatRoom: chatRoomId,
+      });
+
+
       this.setState({
         message: ''
       });

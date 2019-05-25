@@ -9,7 +9,7 @@ class MessageList extends Component {
       messages: []
     };
 
-    var chatRoomId = '3_1';
+    var chatRoomId = '2_1';
 
     let app = this.props.db.database().ref('messages').orderByChild('chatRoom').equalTo(chatRoomId);
 
