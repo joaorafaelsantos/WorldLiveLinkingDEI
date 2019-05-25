@@ -55,8 +55,8 @@ class Navbar extends Component {
             </div>
             :
             <div style={{display:'flex'}}>
-              <Button color="inherit">Sign In</Button>
-              <Button color="inherit">Sign Up</Button>
+              <Button color="inherit" to="/signin">Sign In</Button>
+              <Button color="inherit" to="/signup">Sign Up</Button>
             </div>
           }
           
