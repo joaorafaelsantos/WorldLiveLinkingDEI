@@ -34,19 +34,23 @@ class MessageBox extends Component {
 
 
     if(e.keyCode === 13 && trim(e.target.value) !== ''){
+
+      var today = new Date(); 
+      var dd = String(today.getDate()).padStart(2, '0'); 
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+      var yyyy = today.getFullYear(); 
+      today = mm + '/' + dd + '/' + yyyy + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+
       e.preventDefault();
       let dbCon = this.props.db.database().ref('/messages');
-      let dbCon2 = this.props.db.database().ref('/alivechat');
       dbCon.push({
         message: trim(e.target.value),
         profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
         chatRoom: chatRoomId,
+        timeStamp: today,
       });
-      dbCon2.push({
-        message: trim(e.target.value),
-        profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
-        chatRoom: chatRoomId,
-      });
+
 
 
       this.setState({
