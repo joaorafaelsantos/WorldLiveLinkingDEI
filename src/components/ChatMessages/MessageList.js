@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
 import Message from './Message';
 import _ from 'lodash';
-import firebase from '../containers/FireBaseConfig';
+import firebase from '../../containers/FireBaseConfig';
 
 class MessageList extends Component {
   constructor(props){
     super(props);
     this.state = {
       messages: []
-      
     };
+  }
 
-    var chatRoomId = '2_1';
-
+  componentDidMount() {
+    const chatRoomId = '2_1';
     let app = this.props.db.database().ref('messages').orderByChild('chatRoom').equalTo(chatRoomId);
-
-
-
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
@@ -38,10 +35,9 @@ class MessageList extends Component {
   }
 
   render() {
-    let messageNodes = this.state.messages.map((message) => {
+    let messageNodes = this.state.messages.map((message, index) => {
       return (
-        
-        <div className="card">
+        <div key={index} className="card">
           <div className="container img chat-message-write">
           <div className="fixed">
           <img src={message.profilePicUrl}></img>
