@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Message from './Message';
 import _ from 'lodash';
-import firebase from '../containers/FireBaseConfig';
+import firebase from '../../containers/FireBaseConfig';
 
 class MessageList extends Component {
   constructor(props){
