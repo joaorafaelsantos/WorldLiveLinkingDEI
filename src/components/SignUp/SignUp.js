@@ -1,35 +1,60 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import './SignUp.css';
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import * as Yup from "yup";
+import {Formik} from "formik";
+import {SignUpForm} from "./SignUpForm";
 
-const SignUp = ({ onClick }) => (
-    <div className="signup-form">
-        <div className="form">
-            <div className="menu">
-            <h2>Account creation</h2>
-            <ul>
-                <li><h5 className="login_text">Username</h5></li>
-                <li><input type="text"></input></li>    
-                <li><h5 className="login_text">Password</h5></li>
-                <li><input type="text"></input></li>
-                <li><h5 className="password_text">Confirm Password</h5></li>
-                <li><input type="password"></input></li>
-            </ul>    
-            </div>
-            <div className="button">
-                <a className="login-button" onClick={onClick}>Create Account</a>
-                <p className="info-text">This will simulate a sign up event.</p>
-            </div>
-        </div>   
-    </div>
-);
 
-SignUp.propTypes = {
-    onClick: PropTypes.func.isRequired,
-}
+const validationSchema = Yup.object({
+    name: Yup.string("Enter your Name")
+        .required("Email is required"),
+    email: Yup.string("Enter your email")
+        .email("Enter a valid email")
+        .required("Email is required"),
+    password: Yup.string("")
+        .min(8, "Password must contain at least 8 characters")
+        .required("Enter your password"),
+    pwd_confirmation: Yup.string("")
+        .required("Enter your password")
+        .oneOf([Yup.ref("password")], "Password does not match")
+});
 
-SignUp.defaultProps = {
-    onClick: () => alert('Sign Up clicked!')
+class SignUp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            email: "",
+            password: "",
+            pwd_confirmation: ""
+        }
+    }
+
+    render() {
+        const { name, email, password, pwd_confirmation } = this.state;
+        const values = {
+            name: name,
+            email: email,
+            password: password,
+            pwd_confirmation: pwd_confirmation
+        };
+        return (
+            <Grid container justify="center">
+                <Grid item xs={4}>
+                    <Paper className="signup-box">
+                        <Formik
+                            render={props => <SignUpForm {...props}/>}
+                            initialValues={values}
+                            validationSchema={validationSchema}
+                            onSubmit={this.props.onClick}
+                        />
+                    </Paper>
+                </Grid>
+            </Grid>
+        )
+    }
 }
 
 export default SignUp;

@@ -1,47 +1,52 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
 import './SignIn.css';
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import {Formik} from "formik";
+import {SignInForm} from "./SignInForm";
+import * as Yup from "yup";
 
-const SignIn = ({ onClick }) => (
-    <div className="signin-form">
-        <div className="form">
-            <div className="menu">
-            <ul>
-                <li><TextField
-                    required
-                    id="standard-email-input"
-                    label="Email address"
-                    className="email-field"
-                    margin="normal"
-                /></li>
-                <li><TextField
-                    required
-                    id="standard-password-input"
-                    label="Password"
-                    type="password"
-                    className="password-field"
-                    autoComplete="current-password"
-                    margin="normal"
-                /></li>
-            </ul>
-            </div>
-            <div className="button">
-                <Button variant="contained" className="signin-button" onClick={onClick}>
-                    Sign in
-                </Button>
-            </div>
-        </div>   
-    </div>
-);
 
-SignIn.propTypes = {
-    onClick: PropTypes.func.isRequired,
+const validationSchema = Yup.object({
+    email: Yup.string("Enter your email")
+        .email("Enter a valid email")
+        .required("Email is required"),
+    password: Yup.string("")
+        .min(8, "Password must contain at least 8 characters")
+        .max(32, "Password cannot contain more than 32 characters")
+        .required("Enter your password")
+});
+
+
+export default class SignIn extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: ""
+        };
+    }
+
+
+    render() {
+        const { email, password } = this.state;
+        const values = {
+            email: email,
+            password: password
+        };
+        return (<div>
+            <Grid container justify="center">
+                <Grid item xs={4}>
+                    <Paper className="signin-box">
+                        <Formik
+                            render={props => <SignInForm {...props}/>}
+                            initialValues={values}
+                            validationSchema={validationSchema}
+                            onSubmit={this.props.onClick}
+                        />
+                    </Paper>
+                </Grid>
+            </Grid>
+        </div>);
+    }
 }
-
-SignIn.defaultProps = {
-    onClick: () => alert('Sign in clicked!')
-}
-
-export default SignIn;

@@ -1,11 +1,10 @@
-.signin-form {
-    border: .1rem solid black;
-    width: 40%;
-    height: 18rem;
-    padding: 2rem;
+.signin-box {
+    display: grid;
+    padding: 3rem;
     margin: 5rem auto;
     text-align: center;
 }
+
 
 .login-button {
     width: 70%;
@@ -27,21 +26,13 @@
     margin-top: 2rem;
 }
 .login {
-    text-align: center
+    text-align: center;
 }
 .button {
-    margin-top: 1cm 
-}
-.password_text{
-    line-break: normal
+    width: 70%;
+    margin: 0 auto;
 }
 
-.email-field {
-    width: 10rem;
-}
-.password-field {
-    width: 10rem;
-}
 
 h5 {
     margin: 0;
