@@ -1,4 +1,13 @@
+.signup-box {
+    display: grid;
+    padding: 3rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+
+
 .signup-form {
+    display: grid;
     border: .1rem solid black;
     width: 60%;
     height: 20rem;
@@ -21,6 +30,14 @@
     opacity: .7;
 }
 
+.name-field {
+    width: 100%;
+}
+
+.email-field {
+    width: 100%;
+}
+
 .info-text {
     opacity: .3;
     margin-top: 2rem;
@@ -29,7 +46,8 @@
     text-align: center
 }
 .button {
-    margin-top: 1cm 
+    margin: 0 auto;
+    margin-top: 1cm;
 }
 .password_text{
     line-break: normal

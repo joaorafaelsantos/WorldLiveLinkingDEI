@@ -21,7 +21,7 @@ class SignUpContainer extends Component {
   }
 
   handleClick() {
-    this.props.history.push("/signin");
+    this.props.history.push("/submitSignin");
   }
 
   render() {
