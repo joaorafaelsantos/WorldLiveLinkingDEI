@@ -39,6 +39,7 @@ class App extends Component {
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/map" component={MapContainer}/>
           <Route path="/chat" component={ChatContainer}/>
+          
         </div>
       </div>
       </MuiThemeProvider>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Chat from '../components/Chat/Chat';
 
+
+
 const mapStateToProps = ({ alumni }) => {
     return {
         alumni
@@ -17,8 +19,12 @@ class ChatContainer extends Component {
     }
 
     render() {
+       
         return (
-            <Chat alumni={this.state.alumniData} />
+
+            <Chat alumni={this.state.alumniData}/>
+
+
         )
     }
 }

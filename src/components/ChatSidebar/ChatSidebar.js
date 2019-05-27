@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './ChatSidebar.css';
 
 const ChatSidebar = () => (
@@ -12,7 +11,7 @@ const ChatSidebar = () => (
                 Corey Soule
             </li>
             <li className="chat-sidebar-item">
-                Patrick Wilson
+            Patrick Wilson
             </li>
         </ul>
     </div>

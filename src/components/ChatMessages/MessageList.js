@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Message from './Message';
 import _ from 'lodash';
 import firebase from '../../containers/FireBaseConfig';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+ 
 
 class MessageList extends Component {
   constructor(props){
@@ -17,6 +19,7 @@ class MessageList extends Component {
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
+   
   }
 
   getData(values){
@@ -32,6 +35,17 @@ class MessageList extends Component {
       this.setState({
         messages: messages
       });
+      const data =  messages;
+     /* UNIQUE CHAT ROOMS FROM FIREBASE
+      var unique = [];
+      data.filter(function(item){
+        var i = unique.findIndex(x => x.chatRoom == item.chatRoom);
+        if(i <= -1){
+          unique.push({chatRoom: item.chatRoom});
+        }
+        return null;
+      });
+      console.log(unique);*/
   }
 
   render() {
