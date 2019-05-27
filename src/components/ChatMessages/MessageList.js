@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import Message from './Message';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 import firebase from '../../containers/FireBaseConfig';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
  
+
+
+const mapStateToProps = ({ chat }) => {
+  return {
+      chat
+  }
+}
 
 class MessageList extends Component {
   constructor(props){
@@ -13,14 +21,31 @@ class MessageList extends Component {
     };
   }
 
+
   componentDidMount() {
-    const chatRoomId = '2_1';
+
+    this.getFromFirebase(this.props.chat.data);
+  }
+
+  componentDidUpdate(prevProps , prevState) {
+    if (prevProps.chat.data !== this.props.chat.data){
+      this.getFromFirebase(this.props.chat.data);
+    }
+
+
+  }
+
+  getFromFirebase(chatRoomId){
+    //const chatRoomId = '2_1';
     let app = this.props.db.database().ref('messages').orderByChild('chatRoom').equalTo(chatRoomId);
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
    
+
   }
+
+
 
   getData(values){
     let messagesVal = values;
@@ -71,4 +96,4 @@ class MessageList extends Component {
   }
 }
 
-export default MessageList
+export default connect(mapStateToProps)(MessageList);

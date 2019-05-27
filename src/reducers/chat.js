@@ -1,7 +1,7 @@
 import types from "../constants/actionTypes";
 
 const initialState = {
-  data: [0]
+  data: "2_1"
 };
 
 export default function chat(state = initialState, action) {
