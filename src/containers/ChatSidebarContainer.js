@@ -40,6 +40,7 @@ class ChatSidebarContainer extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.changeChatUserId = this.changeChatUserId.bind(this);
     }
 
 
@@ -48,10 +49,7 @@ class ChatSidebarContainer extends Component {
     }
 
     changeChatUserId(id){
-        alert('Hello, World!');
-        //this.props.updateChatUser(id);
-
-
+        this.props.updateChatUser(id);
     }
 
     handleChange(event) {
