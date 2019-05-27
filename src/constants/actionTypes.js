@@ -11,4 +11,5 @@ export default createConstants(
     'AUTH_FETCH_SUCCESS',
     'AUTH_FETCH_FAILURE',
     'AUTH_RESET',
+    'CHAT_USER_UPDATE',
 );

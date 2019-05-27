@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import ChatSidebar from '../components/ChatSidebar/ChatSidebar';
+import { connect } from 'react-redux';
+import { updateChatUser } from '../actions/chat';
+
+const mapStateToProps = ({ chat }) => {
+    return {
+        chat
+    }
+ }
+
+
+ const mapDispatchToProps = (dispatch) => ({updateChatUser:chatUserId => dispatch(updateChatUser(chatUserId))});
+
 
 
 class ChatSidebarContainer extends Component {
@@ -30,6 +42,18 @@ class ChatSidebarContainer extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+
+    componentDidMount() {
+        console.log(this.props);
+    }
+
+    changeChatUserId(id){
+        alert('Hello, World!');
+        //this.props.updateChatUser(id);
+
+
+    }
+
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
@@ -57,9 +81,9 @@ class ChatSidebarContainer extends Component {
 
     render() {
         return (
-            <ChatSidebar />
+            <ChatSidebar onClick={this.changeChatUserId} />
         )
     }
 }
 
-export default ChatSidebarContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(ChatSidebarContainer);
