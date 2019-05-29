@@ -22,19 +22,41 @@ class ChatMessages extends Component {
       message: e.target.value
     });
 }
+
+
+
+
+
+
+
   onKeyup(e){
-    var fromUserId = 1;
-    var toUserId = 2;
-    if(fromUserId > toUserId){
-      var chatRoomId = fromUserId + '_' + toUserId;
-    }else{
 
-      var chatRoomId = toUserId + '_' + fromUserId;
+ 
 
-    }
 
 
     if(e.keyCode === 13 && trim(e.target.value) !== ''){
+
+
+      var toUserId = '5ce58fdcd8b6d3e887adf7d4';
+      var fromUserId = '5ce94569af989e2949f71823';
+      var chatRoomIds = fromUserId + toUserId;
+  
+      var numb = chatRoomIds.match(/\d/g);
+      var res = numb.map(function(v){return +v})
+  
+      console.log(res);
+  
+    
+  
+  
+  
+      var sum = res.reduce(function(a, b) { return a + b; }, 0);
+  console.log(sum); // 6
+  
+        var chatRoomId = sum;
+
+
 
       var today = new Date(); 
       var dd = String(today.getDate()).padStart(2, '0'); 
@@ -48,7 +70,9 @@ class ChatMessages extends Component {
       dbCon.push({
         message: trim(e.target.value),
         profilePicUrl: 'https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg',
-        chatRoom: chatRoomId,
+        chatRoom: chatRoomId.toString(),
+        from: fromUserId,
+        to: toUserId,
         timeStamp: today,
       });
 

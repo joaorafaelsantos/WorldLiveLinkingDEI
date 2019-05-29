@@ -4,20 +4,22 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import firebase from '../../containers/FireBaseConfig';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
- 
 
 
-const mapStateToProps = ({ chat }) => {
+
+const mapStateToProps = ({ chat, auth }) => {
   return {
+      auth,
       chat
   }
-}
+};
 
 class MessageList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      id: this.props.auth.data.profile.id
     };
   }
 
@@ -32,7 +34,9 @@ class MessageList extends Component {
       this.getFromFirebase(this.props.chat.data);
     }
 
-
+    if (prevProps.auth.data.profile.id !== this.props.auth.data.profile.id){
+      this.setState({id: this.props.auth.data.profile.id});
+    }
   }
 
   getFromFirebase(chatRoomId){
