@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 
 export const SignUpForm = props => {
     const {
-        values: {name, email, password, pwd_confirmation},
+        values: {name, username, email, password, pwd_confirmation},
         errors,
         touched,
         handleChange,
@@ -33,6 +33,18 @@ export const SignUpForm = props => {
                 label="Name"
                 value={name}
                 onChange={change.bind(null, "name")}
+                margin="normal"
+                fullWidth
+            />
+            <TextField
+                required
+                name="username"
+                id="signup-username-input"
+                helperText={touched.username ? errors.username: ""}
+                error={touched.username && Boolean(errors.username)}
+                label="Username"
+                value={username}
+                onChange={change.bind(null, "username")}
                 margin="normal"
                 fullWidth
             />
@@ -66,7 +78,7 @@ export const SignUpForm = props => {
                 required
                 name="pwd_confirmation"
                 id="signup-pwd-confirmation-input"
-                label="Cponfirm password"
+                label="Confirm password"
                 helperText={touched.pwd_confirmation ? errors.pwd_confirmation: ""}
                 error={touched.pwd_confirmation && Boolean(errors.pwd_confirmation)}
                 type="password"

@@ -1,4 +1,5 @@
 import types from '../constants/actionTypes';
+import {apiInstance} from "./api";
 
 export function authHasFailed(bool) {
     return {
@@ -21,16 +22,46 @@ export function authFetchDataSuccess(data) {
     };
 }
 
-export function authFetchData(url = null) {
+export function registerHasFailed(bool) {
+    return {
+        type: types.AUTH_FETCH_FAILURE,
+        error: bool
+    };
+}
+
+export function registerIsFetching(bool) {
+    return {
+        type: types.AUTH_FETCH_REQUEST,
+        isFetching: bool
+    };
+}
+
+export function registerFetchDataSuccess(data) {
+    return {
+        type: types.AUTH_FETCH_SUCCESS,
+        data
+    };
+}
+
+
+export function authFetchData(credentials, url = '/login') {
     return (dispatch) => {
         dispatch(authIsFetching(true));
-        
-        if (!url) dispatch(authFetchDataSuccess({isAuth: true}));
 
-        else {
-            fetch(url)
+
+        let formData = new FormData();
+        formData.set('username', credentials.email);
+        formData.set('password', credentials.password);
+
+        const request = {
+            url: url,
+            method: "POST",
+            data: formData
+        };
+
+        apiInstance.request(request)
             .then((response) => {
-                if (!response.ok) {
+                if (response.status !== 200) {
                     throw Error(response.statusText);
                 }
 
@@ -38,12 +69,81 @@ export function authFetchData(url = null) {
 
                 return response;
             })
-            .then((response) => response.json())
-            .then((items) => dispatch(authFetchDataSuccess(items)))
-            .catch(() => dispatch(authHasFailed(true)));
-        }
+            .then(response => {
+                const data = response.data;
+                if (data.result !== "Aloha") {
+                    throw Error("Authentication failed.");
+                }
+            })
+            .then(() => dispatch(authFetchDataSuccess({isAuth: true})))
+            .catch(() => {
+                dispatch(authHasFailed(true))
+            });
+
     };
 }
+
+export function registerFetchData(registration, url = '/alumni') {
+    return (dispatch) => {
+        dispatch(authIsFetching(true));
+
+        const body = {
+            birthdate: "",
+            company: {
+                email: "",
+                job: "",
+                name: "",
+                startDate: ""
+            },
+            course: {
+                endDate: "",
+                name: "",
+                startDate: "",
+                university: ""
+            },
+            email: registration.email,
+            id: "",
+            location: {
+                city: "",
+                latitude: "",
+                location: "",
+                longitude: ""
+            },
+            name: registration.name,
+            password: registration.password,
+            username: registration.username
+        };
+
+        const request = {
+            url: url,
+            method: "POST",
+            data: body
+        };
+
+        // apiInstance.request(request)
+        //     .then((response) => {
+        //         if (response.status !== 200) {
+        //             throw Error(response.statusText);
+        //         }
+        //
+        //         dispatch(registerIsFetching(false));
+        //
+        //         return response;
+        //     })
+        //     .then(response => {
+        //         const data = response.data;
+        //         if (data.result !== "Aloha") {
+        //             throw Error("Authentication failed.");
+        //         }
+        //     })
+        //     .then(() => dispatch(registerFetchDataSuccess({isAuth: true})))
+        //     .catch(() => {
+        //         dispatch(registerHasFailed(true))
+        //     });
+
+    };
+}
+
 
 export function resetAuth() {
     return {

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Map from '../components/Map/Map';
 
-const mapStateToProps = ({ alumni }) => {
+const mapStateToProps = ({ alumni, auth }) => {
     return {
-        alumni
+        alumni,
+        auth
     }
 }
 
@@ -17,6 +18,12 @@ class MapContainer extends Component {
             zoom: 3,
             alumniData: this.props.alumni.data,
             infoboxesWithPushPins: []
+        }
+    }
+
+    componentWillMount() {
+        if (!this.props.auth.data.isAuth) {
+            this.props.history.push("/signin");
         }
     }
 

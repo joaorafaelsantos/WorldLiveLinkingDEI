@@ -26,6 +26,24 @@ export default function alumni(state = initialState, action) {
         isFetching: false,
         error: true
       };
+    case types.REGISTER_FETCH_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case types.REGISTER_FETCH_SUCCESS:
+      return {
+        ...state,
+        data: action.data,
+        isFetching: false,
+        error: false
+      };
+    case types.REGISTER_FETCH_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true
+      };
     case types.AUTH_RESET:
       return {
         data: initialState.data,
