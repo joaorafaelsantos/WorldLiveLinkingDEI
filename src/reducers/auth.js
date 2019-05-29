@@ -2,7 +2,33 @@ import types from "../constants/actionTypes";
 
 const initialState = {
   data: {
-    isAuth: false
+    isAuth: false,
+    profile: {
+      birthdate: "",
+      company: {
+        email: "",
+        job: "",
+        name: "",
+        startDate: ""
+      },
+      course: {
+        endDate: "",
+        name: "",
+        startDate: "",
+        university: ""
+      },
+      email: "",
+      id: "",
+      location: {
+        city: "",
+        latitude: "",
+        location: "",
+        longitude: ""
+      },
+      name: "",
+      password: "",
+      username: ""
+    }
   }
 };
 
@@ -16,7 +42,7 @@ export default function alumni(state = initialState, action) {
     case types.AUTH_FETCH_SUCCESS:
       return {
         ...state,
-        data: action.data,
+        data: { ...state.data, ...action.data },
         isFetching: false,
         error: false
       };
@@ -39,6 +65,24 @@ export default function alumni(state = initialState, action) {
         error: false
       };
     case types.REGISTER_FETCH_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: true
+      };
+    case types.PROFILE_FETCH_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case types.PROFILE_FETCH_SUCCESS:
+      return {
+        ...state,
+        data: {...state.data, ...action.data},
+        isFetching: false,
+        error: false
+      };
+    case types.PROFILE_FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
