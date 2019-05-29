@@ -2,11 +2,22 @@ import React, {Component} from 'react';
 import trim from 'trim';
 import MessageList from './MessageList';
 import './ChatMessages.css';
-
+import { connect } from 'react-redux';
 
 import Firebase from '../../containers/FireBaseConfig';
 
+const mapStateToProps = ({ chat, auth }) => {
+  return {
+      auth,
+      chat
+  }
+};
+
+
 class ChatMessages extends Component {
+
+
+
 
   constructor(props){
     super(props);
@@ -14,7 +25,8 @@ class ChatMessages extends Component {
     this.onKeyup = this.onKeyup.bind(this);
     this.state = {
       message: '',
-      profilePicUrl: ''
+      profilePicUrl: '',
+      id: this.props.auth.data.profile.id
     };
   }
   onChange(e){
@@ -39,7 +51,7 @@ class ChatMessages extends Component {
 
 
       var toUserId = '5ce58fdcd8b6d3e887adf7d4';
-      var fromUserId = '5ce94569af989e2949f71823';
+      var fromUserId = this.state.id;
       var chatRoomIds = fromUserId + toUserId;
   
       var numb = chatRoomIds.match(/\d/g);
@@ -102,4 +114,4 @@ class ChatMessages extends Component {
   }
 }
 
-export default ChatMessages
+export default connect(mapStateToProps)(ChatMessages)
