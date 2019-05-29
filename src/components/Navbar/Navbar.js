@@ -23,7 +23,8 @@ class Navbar extends Component {
         this.setState({ anchorEl: null });
     };
     render() {
-        const {isAuth} = this.props;
+        const { isAuth } = this.props;
+        const { profileName } = this.props;
         const { anchorEl } = this.state;
       return (
         <AppBar position="fixed">
@@ -47,7 +48,7 @@ class Navbar extends Component {
                     aria-haspopup="true"
                     onClick={this.handleClick}
                     >
-                    Joao Santos
+                    {profileName}
                 </Button>
               </div>
           <Menu styles={{top: '38px'}}

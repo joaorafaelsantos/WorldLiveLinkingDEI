@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { browserHistory } from "react-router-dom";
 import SignIn from "../components/SignIn/SignIn";
-import { authFetchData } from "../actions/auth";
+import {authFetchData, profileFetchData} from "../actions/auth";
 
 const mapStateToProps = ({ auth }) => {
   return {
@@ -10,7 +9,8 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  signIn: credentials => dispatch(authFetchData(credentials))
+  signIn: credentials => dispatch(authFetchData(credentials)),
+  fetchProfile: () => dispatch(profileFetchData())
 });
 
 class SignInContainer extends Component {
@@ -25,7 +25,10 @@ class SignInContainer extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.auth.data.isAuth !== this.props.auth.data.isAuth) {
       this.setState({ isAuth: this.props.auth.data.isAuth });
-      if (this.props.auth.data.isAuth) this.props.history.push("/map");
+      if (this.props.auth.data.isAuth) {
+        this.props.fetchProfile();
+        this.props.history.push("/map");
+      }
     }
   }
 
