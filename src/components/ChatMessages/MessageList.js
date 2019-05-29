@@ -27,6 +27,7 @@ class MessageList extends Component {
   componentDidMount() {
 
     this.getFromFirebase(this.props.chat.data);
+    
   }
 
   componentDidUpdate(prevProps , prevState) {
@@ -49,7 +50,31 @@ class MessageList extends Component {
 
   }
 
+  componentWillMount() {        
+     this.fetchUsersChattedFirebase(this.state.id);
+  }
 
+  fetchUsersChattedFirebase = async (fromUserId) => {
+    var data1 = [];
+    var fireBaseResponse = this.props.db.database().ref('messages').orderByChild('from').equalTo(fromUserId);
+    fireBaseResponse.once('value').then(snapshot => {
+        snapshot.forEach(item => {
+            var temp = item.val();
+            data1.push(temp);
+            return false;
+   });
+      //unique chatrooms
+        var unique = [];
+        data1.filter(function(item){
+          var i = unique.findIndex(x => x.to == item.to);
+          if(i <= -1){
+            unique.push({to: item.to});
+          }
+          return null;
+        });
+        console.log(unique);
+   });
+  }
 
   getData(values){
     let messagesVal = values;
