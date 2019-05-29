@@ -10,18 +10,30 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  register: registration => dispatch(authFetchData(registration))
+});
+
 
 class SignUpContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      isAuth: this.props.auth.data.isAuth
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.props.history.push("/submitSignin");
+  componentDidUpdate(prevProps) {
+    if (prevProps.auth.data.isAuth !== this.props.auth.data.isAuth) {
+      this.setState({ isAuth: this.props.auth.data.isAuth });
+      if (this.props.auth.data.isAuth) this.props.history.push("/map");
+    }
+  }
+
+
+  handleClick(registration) {
+    this.props.register(registration)
   }
 
   render() {
@@ -31,4 +43,5 @@ class SignUpContainer extends Component {
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps
 )(SignUpContainer);

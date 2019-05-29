@@ -10,7 +10,7 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-  signIn: () => dispatch(authFetchData())
+  signIn: credentials => dispatch(authFetchData(credentials))
 });
 
 class SignInContainer extends Component {
@@ -29,8 +29,8 @@ class SignInContainer extends Component {
     }
   }
 
-  handleClick() {
-    this.props.signIn();
+  handleClick(credentials) {
+    this.props.signIn(credentials);
   }
 
   render() {

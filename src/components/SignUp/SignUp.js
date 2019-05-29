@@ -10,6 +10,8 @@ import {SignUpForm} from "./SignUpForm";
 const validationSchema = Yup.object({
     name: Yup.string("Enter your Name")
         .required("Email is required"),
+    username: Yup.string("Enter your Username")
+        .required("Username is required"),
     email: Yup.string("Enter your email")
         .email("Enter a valid email")
         .required("Email is required"),
@@ -26,6 +28,7 @@ class SignUp extends Component {
         super(props);
         this.state = {
             name: "",
+            username: "",
             email: "",
             password: "",
             pwd_confirmation: ""
@@ -33,9 +36,10 @@ class SignUp extends Component {
     }
 
     render() {
-        const { name, email, password, pwd_confirmation } = this.state;
+        const { name, username, email, password, pwd_confirmation } = this.state;
         const values = {
             name: name,
+            username: username,
             email: email,
             password: password,
             pwd_confirmation: pwd_confirmation
