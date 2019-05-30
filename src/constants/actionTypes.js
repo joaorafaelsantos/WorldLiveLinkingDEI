@@ -21,4 +21,5 @@ export default createConstants(
 
     'AUTH_RESET',
     'CHAT_USER_UPDATE',
+    'ARRAY_USERS',
 );

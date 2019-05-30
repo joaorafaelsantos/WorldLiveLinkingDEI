@@ -10,6 +10,9 @@ const mapStateToProps = ({ chat }) => {
  }
 
 
+
+
+
  const mapDispatchToProps = (dispatch) => ({updateChatUser:chatUserId => dispatch(updateChatUser(chatUserId))});
 
 
@@ -79,7 +82,7 @@ class ChatSidebarContainer extends Component {
 
     render() {
         return (
-            <ChatSidebar onClick={this.changeChatUserId} />
+            <ChatSidebar onClick={this.changeChatUserId} users={this.props.chat.users} />
         )
     }
 }

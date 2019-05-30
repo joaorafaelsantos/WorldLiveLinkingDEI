@@ -26,7 +26,8 @@ class ChatMessages extends Component {
     this.state = {
       message: '',
       profilePicUrl: '',
-      id: this.props.auth.data.profile.id
+      id: this.props.auth.data.profile.id,
+
     };
   }
   onChange(e){
@@ -41,7 +42,7 @@ class ChatMessages extends Component {
 
 
 
-  onKeyup(e){
+  onKeyup(e, toUserId){
 
  
 
@@ -49,8 +50,8 @@ class ChatMessages extends Component {
 
     if(e.keyCode === 13 && trim(e.target.value) !== ''){
 
-
-      var toUserId = '5ce58fdcd8b6d3e887adf7d4';
+      
+      var toUserId = this.props.chat.data;
       var fromUserId = this.state.id;
       var chatRoomIds = fromUserId + toUserId;
   

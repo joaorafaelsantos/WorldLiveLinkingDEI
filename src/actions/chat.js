@@ -6,3 +6,10 @@ export function updateChatUser(data) {
         data
     };
  }
+
+ export function updateArrayUsers(data) {
+    return {
+        type: types.ARRAY_USERS,
+        users: data
+    };
+ }
