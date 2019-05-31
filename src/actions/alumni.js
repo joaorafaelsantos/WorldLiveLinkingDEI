@@ -1,4 +1,5 @@
 import types from '../constants/actionTypes';
+import { config } from '../config';
 
 export function alumniHasFailed(bool) {
     return {
@@ -21,11 +22,11 @@ export function alumniFetchDataSuccess(data) {
     };
 }
 
-export function alumniFetchData(url) {
+export function alumniFetchData() {
     return (dispatch) => {
         dispatch(alumniIsFetching(true));
 
-        fetch(url)
+        fetch(`${config.BASE_URL}/alumni`)
             .then((response) => {
                 if (!response.ok) {
                     throw Error(response.statusText);

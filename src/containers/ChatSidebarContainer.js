@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import ChatSidebar from '../components/ChatSidebar/ChatSidebar';
 import { connect } from 'react-redux';
 import { updateChatUser } from '../actions/chat';
+import { alumniFetchData } from '../actions/alumni';
 
-const mapStateToProps = ({ chat }) => {
+const mapStateToProps = ({ chat, alumni }) => {
     return {
-        chat
+        chat,
+        alumni
     }
- }
+}
 
-
-
-
-
- const mapDispatchToProps = (dispatch) => ({updateChatUser:chatUserId => dispatch(updateChatUser(chatUserId))});
+const mapDispatchToProps = (dispatch) => (
+    {
+        updateChatUser: chatUserId => dispatch(updateChatUser(chatUserId)),
+        fetchAllUsers: () => dispatch(alumniFetchData())
+    });
 
 
 
@@ -48,10 +50,10 @@ class ChatSidebarContainer extends Component {
 
 
     componentDidMount() {
-        //console.log(this.props);
+        this.props.fetchAllUsers();
     }
 
-    changeChatUserId(id){
+    changeChatUserId(id) {
         this.props.updateChatUser(id);
     }
 
@@ -80,9 +82,10 @@ class ChatSidebarContainer extends Component {
         })
     }
 
+
     render() {
         return (
-            <ChatSidebar onClick={this.changeChatUserId} users={this.props.chat.users} />
+            <ChatSidebar onClick={this.changeChatUserId} users={this.props.alumni.data} />
         )
     }
 }

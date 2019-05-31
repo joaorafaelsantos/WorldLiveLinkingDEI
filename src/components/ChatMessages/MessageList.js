@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import Message from './Message';
+import './ChatMessages.css';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import firebase from '../../containers/FireBaseConfig';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { updateArrayUsers } from '../../actions/chat';
 
 
@@ -45,14 +44,6 @@ class MessageList extends Component {
       this.getFromFirebase(this.props.chat.data);
     }
 
-/*INFINITE LOOP NEEDS FIX (UPDATES SIDEBARCHAT WHEN NEW CHATROOM IS CREATED)
-    if (prevProps.chat.users !== this.props.chat.users){
-     
-      this.fetchUsersChattedFirebase(this.state.id);
-      
-  
-    }*/
-
     if (prevProps.auth.data.profile.id !== this.props.auth.data.profile.id){
      
       this.setState({id: this.props.auth.data.profile.id});
@@ -91,49 +82,9 @@ class MessageList extends Component {
 
   
 
-  componentWillMount() {        
-    this.fetchUsersChattedFirebase(this.state.id);
  
-  }
 
 
-  //retorna todos os users com qual ja falei, este user ja falou -> "fromUserId" retorna de forma unica (unique array).
-  fetchUsersChattedFirebase = async (fromUserId) => {
-    var data1 = [];
-    var fireBaseResponse = this.props.db.database().ref('messages').orderByChild('from').equalTo(fromUserId);
-    fireBaseResponse.once('value').then(snapshot => {
-        snapshot.forEach(item => {
-            var temp = item.val();
-            data1.push(temp);
-            return false;
-   });
-      //unique users
-        var unique = [];
-        data1.filter(function(item){
-          var i = unique.findIndex(x => x.to == item.to);
-          if(i <= -1){
-            unique.push({to: item.to});
-          }
-          return null;
-        });
-        
-
-
-
-        //array of string with unique users
-        let result = unique.map(({ to }) => to);
-
-        console.log("unique users array"+result);
-        
-
-        
-    this.props.updateArrayUsers(result);
-    console.log(this.props);
-
-
-   });
-
-  }
 
   getData(values){
     let messagesVal = values;
@@ -153,14 +104,17 @@ class MessageList extends Component {
 
   render() {
     let messageNodes = this.state.messages.map((message, index) => {
-      return (
+      return (     
         <div key={index} className="card">
           <div className="container img chat-message-write">
           <div className="fixed">
           <img src={message.profilePicUrl}></img>
           </div>
+          
           <div className="flex-item">
-          <Message message = {message.message} />
+          
+          <p>{message.name}: <Message message = {message.message} /></p>
+          <p className="time-right" >{message.timeStamp}</p>
           </div>
           </div>
         </div>

@@ -100,7 +100,7 @@ export default function alumni(state = initialState, action) {
       return {
         ...state,
         //   id: action.payload.id,
-        data: action.payload.data,
+        data: action.data,
         isFetching: false,
         //   lastUpdated: action.payload.receivedAt,
         error: false
