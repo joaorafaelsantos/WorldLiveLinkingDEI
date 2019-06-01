@@ -25,4 +25,4 @@ yarn-error.log*
 .idea*
 
 #test folder
-~/teste
+/~/teste
