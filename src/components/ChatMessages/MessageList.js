@@ -29,14 +29,8 @@ class MessageList extends Component {
     };
   }
 
-
   componentDidMount() {
-    
-   
     this.getFromFirebase(this.props.chat.data);
-  
-    
-    
   }
 
   componentDidUpdate(prevProps , prevState) {
@@ -80,12 +74,6 @@ class MessageList extends Component {
 
   }
 
-  
-
- 
-
-
-
   getData(values){
     let messagesVal = values;
     let messages = _(messagesVal)
@@ -108,7 +96,7 @@ class MessageList extends Component {
         <div key={index} className="card">
           <div className="container img chat-message-write">
           <div className="fixed">
-          <img src={message.profilePicUrl}></img>
+          <img src={message.profilePicUrl} alt="profile-pic"></img>
           </div>
           
           <div className="flex-item">
@@ -121,7 +109,7 @@ class MessageList extends Component {
       )
     });
     return (
-      <div>
+      <div className="cardScroll">
         {messageNodes}
       </div>
     );
