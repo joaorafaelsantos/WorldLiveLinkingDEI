@@ -16,6 +16,7 @@
     "react": "^16.8.3",
     "react-bingmaps": "^3.6.1",
     "react-dom": "^16.8.3",
+    "react-google-location": "^1.2.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
