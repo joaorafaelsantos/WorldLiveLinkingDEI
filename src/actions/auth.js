@@ -68,9 +68,10 @@ export function authFetchData(credentials, url = '/login') {
     return (dispatch) => {
         dispatch(authIsFetching(true));
 
+        console.log(credentials)
 
         let formData = new FormData();
-        formData.set('username', credentials.email);
+        formData.set('username', credentials.username);
         formData.set('password', credentials.password);
 
         const request = {
