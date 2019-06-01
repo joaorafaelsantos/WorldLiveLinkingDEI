@@ -3,30 +3,30 @@ import types from "../constants/actionTypes";
 const initialState = {
   data: [
     {
-      name: "Brian Eno",
+      name: "",
       location: {
-          location: "1 Avenue de Lafayette",
-          city: "Boston",
-          latitude: "42.3534266\" N",
-          longitude: "71.0608761\" W"
+          location: "",
+          city: "",
+          latitude: "",
+          longitude: ""
       },
       company: {
-          name: "altice",
-          email: "email@altice.com",
-          job: "taxista",
-          startDate: "19700101"
+          name: "",
+          email: "",
+          job: "",
+          startDate: ""
       },
       username: null,
       password: null,
       birthdate: null,
       course: {
-          name: "name",
-          university: "university",
-          startDate: "null",
-          endDate: "null"
+          name: "",
+          university: "",
+          startDate: "",
+          endDate: ""
       },
-      email: "email@domain.com",
-      id: "5ce58fdcd8b6d3e887adf7d4"
+      email: "",
+      id: ""
   },
   ]
 };
