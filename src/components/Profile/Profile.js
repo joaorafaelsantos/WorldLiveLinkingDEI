@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import './Profile.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { GoogleComponent } from 'react-google-location' 
+const API_KEY = "AIzaSyDGwf3wXD5z0XqaolwPbRVRKGIkDnK5ql4"
+
 
 const Profile = (props) => {
   const {
@@ -12,13 +15,16 @@ const Profile = (props) => {
       handleSubmit,
       handleChange,
       isValid,
-      setFieldTouched
+      setFieldTouched,
+      
+
   } = props;
 
   const change = (name, e) => {
     e.persist();
     handleChange(e);
     setFieldTouched(name, true, false);
+    console.log(e);
   };
   return(
     <div style={{background:'transparent'}}>
@@ -38,17 +44,8 @@ const Profile = (props) => {
           onChange={change.bind(null, "name")}
           margin="normal"
         />
-        <TextField
-          id="location"
-          name="location"
-          helperText={touched.location ? errors.location : ""}
-          error={touched.location && Boolean(errors.location)}
-          value={location}
-          style={{ margin: 8 }}
-          placeholder="Location"
-          onChange={change.bind(null, "location")}
-          margin="normal"
-        />
+        <GoogleComponent apiKey={API_KEY} language={'pt'} coordinates={true} />
+
          <TextField
           id="jobDescription"
           name="jobDescription"

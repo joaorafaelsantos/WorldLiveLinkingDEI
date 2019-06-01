@@ -34,7 +34,7 @@ class ProfileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      place: null,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -48,7 +48,7 @@ class ProfileContainer extends Component {
     return (
       <div>
         <Formik 
-            render={props => <Profile {...props} onClick={this.handleClick} />}
+            render={props => <Profile {...props} onClick={this.handleClick}  />}
             initialValues={values}
             validationSchema={validationSchema}
         />
