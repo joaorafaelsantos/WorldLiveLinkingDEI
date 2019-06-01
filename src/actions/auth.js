@@ -64,6 +64,14 @@ export function profileFetchDataSuccess(data) {
     };
 }
 
+export function updateProfileSuccess(data) {
+    return {
+        type: types.PROFILE_UPDATE_SUCCESS,
+        data
+    };
+}
+
+
 export function authFetchData(credentials, url = '/login') {
     return (dispatch) => {
         dispatch(authIsFetching(true));
@@ -132,10 +140,9 @@ export function profileFetchData(url = '/alumni/getloggeduserinfo') {
     };
 }
 
-
 export function registerFetchData(registration, url = '/alumni') {
     return (dispatch) => {
-        dispatch(authIsFetching(true));
+        dispatch(registerIsFetching(true));
 
         const body = {
             birthdate: "",
@@ -185,10 +192,57 @@ export function registerFetchData(registration, url = '/alumni') {
             .catch(() => {
                 dispatch(registerHasFailed(true))
             });
-
     };
 }
 
+export function updateProfile(newProfile, url = '/updatealumni') {
+    return (dispatch) => {
+        const body = {
+            company: {
+                email: "",
+                job: newProfile.jobDescription,
+                name: newProfile.company,
+                startDate: ""
+            },
+            course: {
+                endDate: "",
+                name: newProfile.degree,
+                startDate: "",
+                university: ""
+            },
+            location: {
+                city: newProfile.location,
+                latitude: "",
+                location: "",
+                longitude: ""
+            },
+            name: newProfile.name,
+            username: newProfile.username
+        };
+
+        const request = {
+            url: url,
+            method: "PUT",
+            data: body
+        };
+
+        apiInstance.request(request)
+            .then((response) => {
+                if (response.status !== 200) {
+                    throw Error(response.statusText);
+                }
+                return response;
+            })
+            .then(response => {
+                console.log(response.data);
+                return response.data
+            })
+            .then(() => dispatch(updateProfileSuccess({profile: body})))
+            .catch(() => {
+                dispatch(registerHasFailed(true))
+            });
+    };
+}
 
 export function resetAuth() {
     return {
