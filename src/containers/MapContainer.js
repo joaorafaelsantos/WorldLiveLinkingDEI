@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Map from '../components/Map/Map';
+import { alumniFetchData } from '../actions/alumni';
+
 
 const mapStateToProps = ({ alumni, auth }) => {
     return {
@@ -9,6 +11,14 @@ const mapStateToProps = ({ alumni, auth }) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => (
+    {
+        fetchAllUsers: () => dispatch(alumniFetchData())
+    });
+
+
+
+
 class MapContainer extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +26,7 @@ class MapContainer extends Component {
             API_KEY: process.env.REACT_APP_BING_MAP_KEY,
             center: [35.917973, 14.409943],
             zoom: 3,
-            alumniData: this.props.alumni.data,
+           // alumniData: this.props.alumni.data,
             infoboxesWithPushPins: []
         }
     }
@@ -28,7 +38,8 @@ class MapContainer extends Component {
     }
 
     componentDidMount() {
-        this.parseInfoboxes(this.state.alumniData)
+        //this.parseInfoboxes(this.state.alumniData);
+        this.props.fetchAllUsers();
     }
 
     componentDidUpdate(prevProps) {
@@ -53,14 +64,14 @@ class MapContainer extends Component {
     parseInfoboxes(alumniData) {
         const infoboxesWithPushPins = alumniData.map((alumni) => (
             {
-                "location": [alumni.location.lat, alumni.location.lng],
+                "location": [alumni.location.latitude, alumni.location.longitude],
                 "addHandler": "click",
                 "infoboxOption": {
                     title: alumni.name,
-                    description: `<img src=${alumni.image} width="35%"></img>
-                        <p>${alumni.degree} graduated in ${alumni.graduation_year}</p> 
+                    description: `<img  width="35%"></img>
+                        <p>${alumni.course.name} graduated in ${alumni.course.university}</p> 
                         <p>Working at ${alumni.company}</p> 
-                        <p>${alumni.location.city}, ${alumni.location.country}</p>
+                        <p>${alumni.location.city}, ${alumni.course.endDate}</p>
                         <button style='display: block;background-color: #7ed6df;color: #130f40;
                                 padding:0.5rem 0.9rem;cursor:pointer;border:none;
                                 border-radius:5rem;margin-left:6rem;'>Send Message</button>`,
@@ -91,4 +102,4 @@ class MapContainer extends Component {
     }
 }
 
-export default connect(mapStateToProps)(MapContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

@@ -99,7 +99,6 @@ export function authFetchData(credentials, url = '/login') {
             .catch(() => {
                 dispatch(authHasFailed(true))
             });
-
     };
 }
 
@@ -170,26 +169,21 @@ export function registerFetchData(registration, url = '/alumni') {
             data: body
         };
 
-        // apiInstance.request(request)
-        //     .then((response) => {
-        //         if (response.status !== 200) {
-        //             throw Error(response.statusText);
-        //         }
-        //
-        //         dispatch(registerIsFetching(false));
-        //
-        //         return response;
-        //     })
-        //     .then(response => {
-        //         const data = response.data;
-        //         if (data.result !== "Aloha") {
-        //             throw Error("Authentication failed.");
-        //         }
-        //     })
-        //     .then(() => dispatch(registerFetchDataSuccess({isAuth: true})))
-        //     .catch(() => {
-        //         dispatch(registerHasFailed(true))
-        //     });
+        apiInstance.request(request)
+            .then((response) => {
+                if (response.status !== 200) {
+                    throw Error(response.statusText);
+                }
+
+                dispatch(registerIsFetching(false));
+
+                return response;
+            })
+            .then(response => response.data)
+            .then(() => dispatch(registerFetchDataSuccess({isAuth: true, profile: body})))
+            .catch(() => {
+                dispatch(registerHasFailed(true))
+            });
 
     };
 }
