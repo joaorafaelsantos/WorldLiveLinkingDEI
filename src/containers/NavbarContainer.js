@@ -6,7 +6,7 @@ const mapStateToProps = ({ auth }) => {
     return {
         auth
     }
-}
+};
 
 class NavbarContainer extends Component {
     constructor(props) {
@@ -24,7 +24,6 @@ class NavbarContainer extends Component {
 
     render() {
         const { name } = this.props.auth.data.profile;
-
         return (
             <Navbar isAuth={this.state.isAuth} profileName={name} />
         )

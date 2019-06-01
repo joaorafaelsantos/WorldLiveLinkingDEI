@@ -92,7 +92,7 @@ export const SignUpForm = props => {
                     variant="contained"
                     className="signup-button"
                     type="submit">
-                    Sign in
+                    Sign Up
                 </Button>
             </div>
         </form>

@@ -60,7 +60,7 @@ export default function alumni(state = initialState, action) {
     case types.REGISTER_FETCH_SUCCESS:
       return {
         ...state,
-        data: action.data,
+        data: {...state.data, ...action.data},
         isFetching: false,
         error: false
       };
