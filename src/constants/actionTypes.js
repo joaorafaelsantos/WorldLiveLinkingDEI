@@ -5,6 +5,7 @@ export default createConstants(
     'ALUMNI_FETCH_SUCCESS',
     'ALUMNI_FETCH_FAILURE',
     'ALUMNI_UPDATE',
+    'ALUMNI_FILTER_UPDATE',
     'ALUMNI_RESET',
 
     'AUTH_FETCH_REQUEST',
