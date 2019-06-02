@@ -1,13 +1,40 @@
 .chat-sidebar-container {
   flex: 30%;
-  margin: 0rem 1rem;
+  margin: 0rem 8rem;
 }
 
 .chat-sidebar-item {
   margin: .5rem 0rem;
 }
 
+h4{
+  margin-top: 1rem;
+  width: 4.6rem;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000;;
+}
+
+.users-group{
+  margin-top: 20px;
+}
+
+.users-group li{
+  padding-top: 7px;
+}
+
+i{
+  padding-right: 7px;
+  color: #9E9E9E;
+}
+
 .chat-sidebar-item:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* containers */
+.choose-user{
+  position: absolute;
+  top:10%;
+  left: 40%;
 }

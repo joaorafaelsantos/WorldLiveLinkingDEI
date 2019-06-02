@@ -1,49 +1,35 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import TextField from '@material-ui/core/TextField';
 // import PropTypes from 'prop-types';
 import "./Filters.css";
 
 const Filters = ({ cityValue, graduationYearValue, courseValue, onChange, onClickApply, onClickClear }) => {
     return (
         <div className="filter-container">
-            <h2 className="filter-title">Filters</h2>
             <div className="filters">
                 {/* Filter by city */}
                 <div className="filter-city">
-                    <label className="filter-label">City</label>
-                    <br />
-                    <input
-                        className="input"
-                        type="text"
-                        name="cityValue"
-                        value={cityValue}
-                        onChange={onChange}
-                        placeholder="Try Porto"
+                    <TextField
+                        id="city"
+                        label="City"
+                        margin="normal"
                     />
                 </div>
                 {/* Filter by graduation year */}
                 <div className="filter-graduation-year">
-                    <label className="filter-label">Year</label>
-                    <br />
-                    <input
-                        className="input"
-                        type="text"
-                        name="graduationYearValue"
-                        value={graduationYearValue}
-                        onChange={onChange}
-                        placeholder="Try 2018"
+                    <TextField
+                        id="year"
+                        label="Year"
+                        margin="normal"
                     />
                 </div>
                 {/* Filter by course */}
                 <div className="filter-course">
-                    <label className="filter-label">Course</label>
-                    <br />
-                    <input
-                        className="input"
-                        type="text"
-                        name="courseValue"
-                        value={courseValue}
-                        onChange={onChange}
-                        placeholder="Try MESW"
+                    <TextField
+                        id="course"
+                        label="Course"
+                        margin="normal"
                     />
                 </div>
                 <div className="button-container">

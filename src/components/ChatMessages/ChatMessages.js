@@ -3,8 +3,6 @@ import trim from 'trim';
 import './ChatMessages.css';
 import { connect } from 'react-redux';
 
-
-
 const mapStateToProps = ({ chat, auth }) => {
   return {
     auth,
