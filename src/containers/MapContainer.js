@@ -38,11 +38,14 @@ class MapContainer extends Component {
     }
 
     componentDidMount() {
-        //this.parseInfoboxes(this.state.alumniData);
         this.props.fetchAllUsers();
     }
 
     componentDidUpdate(prevProps) {
+        if (!this.props.auth.data.isAuth) {
+            this.props.history.push("/signin");
+        }
+
         const arraysEqual = (arr1, arr2) => {
             if (arr1.length !== arr2.length)
                 return false;

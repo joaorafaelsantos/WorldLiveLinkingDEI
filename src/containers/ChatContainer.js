@@ -25,6 +25,12 @@ class ChatContainer extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (!this.props.auth.data.isAuth) {
+            this.props.history.push("/signin");
+        }
+    }
+
     render() {
        
         return (

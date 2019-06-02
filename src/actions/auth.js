@@ -1,5 +1,6 @@
 import types from '../constants/actionTypes';
 import {apiInstance} from "./api";
+import {config} from "../config";
 
 export function authHasFailed(bool) {
     return {
@@ -78,6 +79,11 @@ export function updateProfileFailed(bool) {
     };
 }
 
+export function resetAuth() {
+    return {
+        type: types.AUTH_RESET,
+    };
+}
 
 export function authFetchData(credentials, url = '/login') {
     return (dispatch) => {
@@ -252,8 +258,23 @@ export function updateProfile(newProfile, url = '/updatealumni') {
     };
 }
 
-export function resetAuth() {
-    return {
-        type: types.AUTH_RESET,
+
+export function resetAuthData(url = '/logout') {
+    return (dispatch) => {
+        const request = {
+            url: url,
+            method: "GET"
+        };
+
+        fetch(`${config.BASE_URL}${url}`)
+            .then((response) => {
+                if (response.status !== 204) {
+                    throw Error(response.statusText);
+                }
+                return response;
+            })
+            .then(() => dispatch(resetAuth()))
+            .catch(() => {});
+
     };
 }
