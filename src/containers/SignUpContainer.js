@@ -30,7 +30,6 @@ class SignUpContainer extends Component {
     if (prevProps.auth.data.isAuth !== this.props.auth.data.isAuth) {
       this.setState({ isAuth: this.props.auth.data.isAuth });
       if (this.props.auth.data.isAuth) {
-        console.log("signed");
         this.props.fetchProfile();
         this.props.history.push("/map");
       }

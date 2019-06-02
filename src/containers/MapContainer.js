@@ -55,15 +55,14 @@ class MapContainer extends Component {
 
         if (!arraysEqual(this.props.alumni.data, prevProps.alumni.data)) {
             this.setState({
-                alumniData: this
-                    .filterLocationUnknown(this.props.alumni.data)
+                alumniData: this.filterLocationUnknown(this.props.alumni.data)
             });
 
-            this.parseInfoboxes(this.props.alumni.data)
+            this.parseInfoboxes(this.filterLocationUnknown(this.props.alumni.data))
         }
 
         if (!arraysEqual(prevProps.alumni.filtered, this.props.alumni.filtered)) {
-            this.parseInfoboxes(this.props.alumni.data)
+            this.parseInfoboxes(this.filterLocationUnknown(this.props.alumni.data))
         }
     }
 

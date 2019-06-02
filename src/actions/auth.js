@@ -71,12 +71,17 @@ export function updateProfileSuccess(data) {
     };
 }
 
+export function updateProfileFailed(bool) {
+    return {
+        type: types.PROFILE_UPDATE_FAILURE,
+        error: bool
+    };
+}
+
 
 export function authFetchData(credentials, url = '/login') {
     return (dispatch) => {
         dispatch(authIsFetching(true));
-
-        console.log(credentials)
 
         let formData = new FormData();
         formData.set('username', credentials.username);
@@ -104,7 +109,7 @@ export function authFetchData(credentials, url = '/login') {
                     throw Error("Authentication failed.");
                 }
             })
-            .then(() => dispatch(authFetchDataSuccess({isAuth: true})))
+            .then(() => dispatch(authFetchDataSuccess({isAuth: true, profile: {username: credentials.username}})))
             .catch(() => {
                 dispatch(authHasFailed(true))
             });
@@ -114,7 +119,7 @@ export function authFetchData(credentials, url = '/login') {
 
 export function profileFetchData(url = '/alumni/getloggeduserinfo') {
     return (dispatch) => {
-        dispatch(authIsFetching(true));
+        dispatch(profileIsFetching(true));
 
         const request = {
             url: url,
@@ -132,7 +137,11 @@ export function profileFetchData(url = '/alumni/getloggeduserinfo') {
                 return response;
             })
             .then(response => response.data)
-            .then(profile => dispatch(profileFetchDataSuccess({isAuth: true, profile})))
+            .then(profile => {
+                delete profile.username;
+
+                dispatch(profileFetchDataSuccess({isAuth: true, profile: {...profile}}))
+            })
             .catch(() => {
                 dispatch(profileHasFailed(true))
             });
@@ -188,7 +197,7 @@ export function registerFetchData(registration, url = '/alumni') {
                 return response;
             })
             .then(response => response.data)
-            .then(() => dispatch(registerFetchDataSuccess({isAuth: true, profile: body})))
+            .then(() => dispatch(registerFetchDataSuccess({isAuth: true, profile: {...body, password: undefined}})))
             .catch(() => {
                 dispatch(registerHasFailed(true))
             });
@@ -234,12 +243,11 @@ export function updateProfile(newProfile, url = '/updatealumni') {
                 return response;
             })
             .then(response => {
-                console.log(response.data);
                 return response.data
             })
             .then(() => dispatch(updateProfileSuccess({profile: body})))
             .catch(() => {
-                dispatch(registerHasFailed(true))
+                dispatch(updateProfileFailed(true))
             });
     };
 }

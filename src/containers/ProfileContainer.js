@@ -33,8 +33,7 @@ class ProfileContainer extends Component {
     }
 
     saveChanges(profile) {
-        console.log(`save: ${profile}`);
-        this.props.updateProfile({...profile, username: this.props.auth.data.username})
+        this.props.updateProfile({...profile, username: this.props.auth.data.profile.username})
     }
 
     render() {
@@ -49,7 +48,8 @@ class ProfileContainer extends Component {
         return (
             <div>
                 <Formik
-                    render={props => <Profile {...props} onClick={this.saveChanges}/>}
+                    render={props => <Profile {...props}/>}
+                    onSubmit={this.saveChanges}
                     initialValues={values}
                     validationSchema={validationSchema}
                 />
@@ -60,4 +60,5 @@ class ProfileContainer extends Component {
 
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
 )(ProfileContainer);
