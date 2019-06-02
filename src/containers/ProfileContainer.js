@@ -35,8 +35,6 @@ class ProfileContainer extends Component {
     }
 
     saveChanges(profile) {
-        console.log(profile)
-
         // this.props.updateProfile({...profile, username: this.props.auth.data.profile.username})
     }
 

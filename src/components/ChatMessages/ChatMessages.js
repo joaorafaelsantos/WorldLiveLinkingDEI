@@ -41,7 +41,6 @@ class ChatMessages extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // console.log(this.state.message)
         this.sendMessage(this.state.message);
     }
 

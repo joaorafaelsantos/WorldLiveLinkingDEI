@@ -19,17 +19,14 @@ const Profile = (props) => {
     } = props;
 
     const change = (name, e) => {
-        console.log(e);
         e.persist();
         handleChange(e);
         setFieldTouched(name, true, false);
-        console.log(e);
     };
 
     // const changeLocation = (name) => {
     //     handleChange(e);
     //     setFieldTouched(name, true, false);
-    //     console.log(e);
     // };
 
     return (
@@ -57,7 +54,6 @@ const Profile = (props) => {
                     language={'pt'}
                     coordinates={true}
                     onChange={(e) => {
-                        console.log(e);
                         setFieldValue('location', e.place);
                         setFieldValue('latitude', e.coordinates.latitude);
                         setFieldValue('longitude', e.coordinates.longitude);

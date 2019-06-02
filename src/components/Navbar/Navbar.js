@@ -30,7 +30,7 @@ class Navbar extends Component {
 
     render() {
         const {isAuth} = this.props;
-        const {isAdmin} = this.props;
+        const {isadmin} = this.props;
         const {profileName} = this.props;
         const {anchorEl} = this.state;
         return (
@@ -43,7 +43,7 @@ class Navbar extends Component {
                         isAuth ?
                             <div>
                                 <div style={{display: 'flex', alignItems: 'center'}}>
-                                    {isAdmin &&
+                                    {isadmin &&
                                     <Button color="inherit">
                                         <Link to="/validatealumni" className="navbar-link">Management</Link>
                                     </Button>

@@ -24,6 +24,12 @@ export default function backoffice(state = initialState, action) {
         isFetching: false,
         error: true
       };
+    case types.VALIDATE_ALUMNI_SUCCESS:
+      return {
+        data: state.data.filter(alumni => alumni.id !== action.data.id),
+        isFetching: false,
+        error: true
+      };
     default:
       return state;
   }

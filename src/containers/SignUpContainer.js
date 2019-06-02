@@ -25,8 +25,6 @@ class SignUpContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-
-    console.log(prevProps);
     if (prevProps.auth.data.isAuth !== this.props.auth.data.isAuth) {
       this.setState({ isAuth: this.props.auth.data.isAuth });
       if (this.props.auth.data.isAuth) {

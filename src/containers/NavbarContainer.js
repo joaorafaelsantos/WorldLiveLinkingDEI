@@ -38,7 +38,7 @@ class NavbarContainer extends Component {
         const { name } = this.props.auth.data.profile;
         return (
             <Navbar isAuth={this.state.isAuth}
-                    isAdmin={this.props.auth.data.profile.isAdmin}
+                    isadmin={this.props.auth.data.profile.isadmin}
                     handleLogout={this.handleLogout}
                     profileName={name} />
         )

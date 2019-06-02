@@ -23,11 +23,21 @@ export function alumniPendingFetchDataSuccess(data) {
     };
 }
 
+
+export function validateAlumniSuccess(data) {
+    return {
+        type: types.VALIDATE_ALUMNI_SUCCESS,
+        data
+    };
+}
+
+
+
 export function alumniPendingFetchData(url='/alumnisnotactivated') {
     return (dispatch) => {
         dispatch(alumniPendingIsFetching(true));
 
-        apiInstance.get(`${config.BASE_URL}${url}`)
+        apiInstance.get(url)
             .then((response) => {
                 if (response.status !== 200) {
                     throw Error(response.statusText);
@@ -39,5 +49,24 @@ export function alumniPendingFetchData(url='/alumnisnotactivated') {
             .then((response) => response.data)
             .then((items) => dispatch(alumniPendingFetchDataSuccess(items)))
             .catch(() => dispatch(alumniPendingHasFailed(true)));
+    };
+}
+
+
+export function alumniPendingUpdate(id, url='/validatealumni') {
+    return (dispatch) => {
+
+        const data = { id };
+
+        apiInstance.put(url, data)
+            .then((response) => {
+                if (response.status !== 200) {
+                    throw Error(response.statusText);
+                }
+
+                return response
+            })
+            .then(() => dispatch(validateAlumniSuccess({ id })))
+            .catch(() => {});
     };
 }

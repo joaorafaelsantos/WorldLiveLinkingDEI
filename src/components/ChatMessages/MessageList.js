@@ -43,7 +43,6 @@ class MessageList extends Component {
 
     getFromFirebase(toUserId) {
         //const chatRoomId = '2_1';
-        console.log(this.props.chat.data);
         //var toUserId = '5ce58fdcd8b6d3e887adf7d4';
         var fromUserId = this.state.id;
         var chatRoomIds = fromUserId + toUserId;
@@ -53,13 +52,9 @@ class MessageList extends Component {
             return +v
         })
 
-        //console.log("somatorio messagesList"+res);
-
-
         var sum = res.reduce(function (a, b) {
             return a + b;
         }, 0);
-        //console.log("somatorio messagesList"+sum); // 6
 
         var chatRoomId = sum;
 
