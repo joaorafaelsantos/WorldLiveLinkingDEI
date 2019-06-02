@@ -6,6 +6,10 @@ import TableHead from "@material-ui/core/TableHead";
 import Table from "@material-ui/core/Table";
 import Paper from "@material-ui/core/Paper";
 import TableBody from "@material-ui/core/TableBody";
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 
 const ProfileValidation = (props) => {
@@ -15,23 +19,19 @@ const ProfileValidation = (props) => {
     console.log(props);
 
     let rows = [{
-        name: "Chocolate",
-        calories: "5",
-        fat: "10",
-        carbs: "40",
-        protein: "98"
+        name: "Jose Antonio",
+        email: "2010879125@fe.up.pt",
+        username: "joseant",
+        company: "NOS",
+        course: "MIEC"
+
     }, {
-        name: "Pudim",
-        calories: "5",
-        fat: "10",
-        carbs: "40",
-        protein: "98"
-    }, {
-        name: "Ice Cream",
-        calories: "5",
-        fat: "10",
-        carbs: "40",
-        protein: "98"
+        name: "Andre Gouveia",
+        email: "201059125@fe.up.pt",
+        username: "andregouveia",
+        company: "EDP",
+        course: "MESW"
+
     }];
 
     return (
@@ -41,11 +41,12 @@ const ProfileValidation = (props) => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                            <TableCell>Nome</TableCell>
+                            <TableCell align="right">E-mail</TableCell>
+                            <TableCell align="right">Username</TableCell>
+                            <TableCell align="right">Company</TableCell>
+                            <TableCell align="right">Course</TableCell>
+                            <TableCell align="right">State</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -54,16 +55,32 @@ const ProfileValidation = (props) => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
+                                <TableCell align="right">{row.email}</TableCell>
+                                <TableCell align="right">{row.username}</TableCell>
+                                <TableCell align="right">{row.company}</TableCell>
+                                <TableCell align="right">{row.course}</TableCell>
+                                <TableCell align="right">
+                                    <FormControl>
+
+                                        <Select native >
+                                            <option value="0" >Deactivated</option>
+                                            <option value="1">Active</option>
+
+                                        </Select>
+                                    </FormControl>
+                              
+                                </TableCell> 
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
+                
             </Paper>
+            <Button variant="contained">Save</Button>
         </div>
+    
+           
+     
     );
 };
 

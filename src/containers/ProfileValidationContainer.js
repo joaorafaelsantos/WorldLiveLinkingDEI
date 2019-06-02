@@ -22,11 +22,12 @@ class ProfileContainer extends Component {
     }
 
     componentWillMount() {
+        /*
         if (!this.props.auth.data.isAuth) {
             this.props.history.push("/signin");
         } else {
             this.props.getPendingAlumni();
-        }
+        }*/
     }
 
     render() {
