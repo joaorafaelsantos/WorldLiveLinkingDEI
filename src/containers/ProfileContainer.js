@@ -36,6 +36,12 @@ class ProfileContainer extends Component {
         this.props.updateProfile({...profile, username: this.props.auth.data.profile.username})
     }
 
+    componentWillMount() {
+        if (!this.props.auth.data.isAuth) {
+            this.props.history.push("/signin");
+        }
+    }
+
     render() {
         const values = {
             name: this.props.auth.data.profile.name,
