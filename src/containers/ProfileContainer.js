@@ -20,6 +20,8 @@ const validationSchema = Yup.object({
         .required("Name is required"),
     location: Yup.string("Enter your location")
         .required("Location is required"),
+    latitude: Yup.string("Enter your latitude"),
+    longitude: Yup.string("Enter your longitude"),
     jobDescription: Yup.string(""),
     company: Yup.string("Enter your company name"),
     degree: Yup.string("Enter your degree")
@@ -27,20 +29,15 @@ const validationSchema = Yup.object({
 });
 
 class ProfileContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      place: null,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
     constructor(props) {
         super(props);
         this.saveChanges = this.saveChanges.bind(this);
     }
 
     saveChanges(profile) {
-        this.props.updateProfile({...profile, username: this.props.auth.data.profile.username})
+        console.log(profile)
+
+        // this.props.updateProfile({...profile, username: this.props.auth.data.profile.username})
     }
 
     componentWillMount() {
@@ -53,6 +50,8 @@ class ProfileContainer extends Component {
         const values = {
             name: this.props.auth.data.profile.name,
             location: this.props.auth.data.profile.location.city,
+            latitude: this.props.auth.data.profile.location.latitude,
+            longitude: this.props.auth.data.profile.location.longitude,
             jobDescription: this.props.auth.data.profile.company.job,
             company: this.props.auth.data.profile.company.name,
             degree: this.props.auth.data.profile.course.name
