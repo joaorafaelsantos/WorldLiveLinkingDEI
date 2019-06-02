@@ -9,6 +9,7 @@ import ProfileContainer from "./containers/ProfileContainer";
 import "./App.css";
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import ProfileValidationContainer from "./containers/ProfileValidationContainer";
 
 const theme = createMuiTheme({
   palette: {
@@ -39,7 +40,7 @@ class App extends Component {
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/map" component={MapContainer}/>
           <Route path="/chat" component={ChatContainer}/>
-          
+          <Route path="/validatealumni" component={ProfileValidationContainer}/>
         </div>
       </div>
       </MuiThemeProvider>

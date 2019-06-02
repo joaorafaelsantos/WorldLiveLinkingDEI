@@ -25,6 +25,7 @@ const initialState = {
         location: "",
         longitude: ""
       },
+      isAdmin: false,
       name: "",
       password: "",
       username: ""
