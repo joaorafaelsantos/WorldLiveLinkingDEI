@@ -8,6 +8,7 @@ const mapStateToProps = ({ auth }) => {
     auth
   };
 };
+
 const mapDispatchToProps = dispatch => ({
   signIn: credentials => dispatch(authFetchData(credentials)),
   fetchProfile: () => dispatch(profileFetchData())

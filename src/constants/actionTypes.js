@@ -5,6 +5,7 @@ export default createConstants(
     'ALUMNI_FETCH_SUCCESS',
     'ALUMNI_FETCH_FAILURE',
     'ALUMNI_UPDATE',
+    'ALUMNI_FILTER_UPDATE',
     'ALUMNI_RESET',
 
     'AUTH_FETCH_REQUEST',
@@ -18,6 +19,8 @@ export default createConstants(
     'PROFILE_FETCH_REQUEST',
     'PROFILE_FETCH_SUCCESS',
     'PROFILE_FETCH_FAILURE',
+    'PROFILE_UPDATE_SUCCESS',
+    'PROFILE_UPDATE_FAILURE',
 
     'AUTH_RESET',
     'CHAT_USER_UPDATE',

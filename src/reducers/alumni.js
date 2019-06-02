@@ -1,34 +1,8 @@
 import types from "../constants/actionTypes";
 
 const initialState = {
-  data: [
-    {
-      name: "",
-      location: {
-          location: "",
-          city: "",
-          latitude: "",
-          longitude: ""
-      },
-      company: {
-          name: "",
-          email: "",
-          job: "",
-          startDate: ""
-      },
-      username: null,
-      password: null,
-      birthdate: null,
-      course: {
-          name: "",
-          university: "",
-          startDate: "",
-          endDate: ""
-      },
-      email: "",
-      id: ""
-  },
-  ]
+  filtered: [],
+  data: []
 };
 
 export default function alumni(state = initialState, action) {
@@ -43,6 +17,7 @@ export default function alumni(state = initialState, action) {
         ...state,
         //   id: action.payload.id,
         data: action.data,
+        filtered: action.data.map(data => data.id),
         isFetching: false,
         //   lastUpdated: action.payload.receivedAt,
         error: false
@@ -57,11 +32,21 @@ export default function alumni(state = initialState, action) {
       return {
         ...state,
         data: action.data,
+        filtered: action.data.map(alumni => alumni.id),
+        isFetching: false,
+        error: false
+      };
+    case types.ALUMNI_FILTER_UPDATE:
+      return {
+        ...state,
+        filtered: action.filtered,
         isFetching: false,
         error: false
       };
     case types.ALUMNI_RESET:
       return {
+        ...state,
+        filtered: initialState.filtered,
         data: initialState.data,
         isFetching: false,
         error: false

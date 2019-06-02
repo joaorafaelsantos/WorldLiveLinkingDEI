@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 
 export const SignInForm = props => {
     const {
-        values: {email, password},
+        values: {username, password},
         errors,
         touched,
         handleChange,
@@ -26,13 +26,13 @@ export const SignInForm = props => {
         >
             <TextField
                 required
-                name="email"
-                id="standard-email-input"
-                helperText={touched.email ? errors.email : ""}
-                error={touched.email && Boolean(errors.email)}
-                label="E-mail address"
-                value={email}
-                onChange={change.bind(null, "email")}
+                name="username"
+                id="standard-username-input"
+                helperText={touched.username ? errors.username: ""}
+                error={touched.username && Boolean(errors.username)}
+                label="Username"
+                value={username}
+                onChange={change.bind(null, "username")}
                 margin="normal"
                 fullWidth
             />
