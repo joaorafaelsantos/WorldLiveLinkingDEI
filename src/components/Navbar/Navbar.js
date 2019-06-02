@@ -23,6 +23,11 @@ class Navbar extends Component {
         this.setState({anchorEl: null});
     };
 
+    handleLogout = () => {
+        this.handleClose();
+        this.props.handleLogout();
+    };
+
     render() {
         const {isAuth} = this.props;
         const {isAdmin} = this.props;
@@ -67,7 +72,7 @@ class Navbar extends Component {
                                     <MenuItem onClick={this.handleClose}>
                                         <Link to="/profile" className="navbar-link navbar-menu__link">My Profile</Link>
                                     </MenuItem>
-                                    <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                                 </Menu>
                             </div>
                             :
