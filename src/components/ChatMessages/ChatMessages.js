@@ -70,7 +70,7 @@ class ChatMessages extends Component {
     return (
 
       <div className="card">
-        <form>
+        <form style={{display:'flex',flexDirection:'column'}}>
           <textarea
             className="container"
             placeholder="Type a message"
@@ -79,6 +79,10 @@ class ChatMessages extends Component {
             onKeyUp={this.onKeyup}
             value={this.state.message}>
           </textarea>
+          <button style={{background:'green',color:'white',width:'4rem',
+            marginLeft:'26.2rem',padding:'5px 10px',cursor:'pointer'}}>
+            Send
+          </button>
         </form>
       </div>
     )
