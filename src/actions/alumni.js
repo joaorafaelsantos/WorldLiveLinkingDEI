@@ -49,6 +49,13 @@ export function updateAlumni(data) {
     };
 }
 
+export function updateAlumniFilter(data) {
+    return {
+        type: types.ALUMNI_FILTER_UPDATE,
+        filtered: data
+    };
+}
+
 export function resetAlumni() {
     return {
         type: types.ALUMNI_RESET,

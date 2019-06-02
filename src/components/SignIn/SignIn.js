@@ -8,13 +8,10 @@ import * as Yup from "yup";
 
 
 const validationSchema = Yup.object({
-    email: Yup.string("Enter your email"),
-        // .email("Enter a valid email")
-        // .required("Email is required"),
+    username: Yup.string("Enter your username")
+        .required("Enter your username"),
     password: Yup.string("Enter your password")
-        // .min(8, "Password must contain at least 8 characters")
-        // .max(32, "Password cannot contain more than 32 characters")
-        // .required("Enter your password")
+        .required("Enter your password")
 });
 
 
@@ -22,16 +19,16 @@ export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
+            username: "",
             password: ""
         };
     }
 
 
     render() {
-        const { email, password } = this.state;
+        const { username, password } = this.state;
         const values = {
-            email: email,
+            username: username,
             password: password
         };
         return (<div>

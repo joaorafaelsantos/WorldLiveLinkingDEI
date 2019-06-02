@@ -51,20 +51,27 @@ class MapContainer extends Component {
                     return false;
             }
             return true;
-        }
+        };
 
         if (!arraysEqual(this.props.alumni.data, prevProps.alumni.data)) {
             this.setState({
-                alumniData: this.props.alumni.data
-            })
-            this.parseInfoboxes(this.props.alumni.data)
+                alumniData: this.filterLocationUnknown(this.props.alumni.data)
+            });
+
+            this.parseInfoboxes(this.filterLocationUnknown(this.props.alumni.data))
+        }
+
+        if (!arraysEqual(prevProps.alumni.filtered, this.props.alumni.filtered)) {
+            this.parseInfoboxes(this.filterLocationUnknown(this.props.alumni.data))
         }
     }
 
     parseInfoboxes(alumniData) {
-        const infoboxesWithPushPins = alumniData.map((alumni) => (
+        const infoboxesWithPushPins = alumniData
+            .filter(alumni => this.props.alumni.filtered.includes(alumni.id))
+            .map((alumni) => (
             {
-                "location": [alumni.location.latitude, alumni.location.longitude],
+                "location": [parseFloat(alumni.location.latitude), parseFloat(alumni.location.longitude)],
                 "addHandler": "click",
                 "infoboxOption": {
                     title: alumni.name,
@@ -82,23 +89,23 @@ class MapContainer extends Component {
                     description: 'Pushpin'
                 },
             })
-        )
+        );
 
         this.setState({ infoboxesWithPushPins })
     }
 
-    render() {
+    filterLocationUnknown(alumniList) {
+        return alumniList.filter(alumni => alumni.location.latitude !== "" && alumni.location.longitude  !== "")
+    }
 
-        if (this.state.infoboxesWithPushPins.length) {
-            return (
-                <Map apiKey={this.state.API_KEY}
-                    center={this.state.center}
-                    zoom={this.state.zoom}
-                    infoboxesWithPushPins={this.state.infoboxesWithPushPins}
-                />
-            )
-        }
-        return null
+    render() {
+        return (
+            <Map apiKey={this.state.API_KEY}
+                 center={this.state.center}
+                 zoom={this.state.zoom}
+                 infoboxesWithPushPins={this.state.infoboxesWithPushPins}
+            />
+        )
     }
 }
 

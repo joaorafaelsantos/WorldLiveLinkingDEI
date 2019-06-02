@@ -42,7 +42,7 @@ export default function alumni(state = initialState, action) {
     case types.AUTH_FETCH_SUCCESS:
       return {
         ...state,
-        data: { ...state.data, ...action.data },
+        data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile}},
         isFetching: false,
         error: false
       };
@@ -78,13 +78,20 @@ export default function alumni(state = initialState, action) {
     case types.PROFILE_FETCH_SUCCESS:
       return {
         ...state,
-        data: {...state.data, ...action.data},
+        data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile}},
         isFetching: false,
         error: false
       };
     case types.PROFILE_FETCH_FAILURE:
       return {
         ...state,
+        isFetching: false,
+        error: true
+      };
+    case types.PROFILE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile}},
         isFetching: false,
         error: true
       };

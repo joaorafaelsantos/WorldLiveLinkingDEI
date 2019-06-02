@@ -26,11 +26,10 @@ const Profile = (props) => {
     setFieldTouched(name, true, false);
     console.log(e);
   };
+
   return(
     <div style={{background:'transparent'}}>
-    <form onSubmit={() => {
-       alert("submitted");
-     }} style={{width:400,display:'flex',flexDirection:'column',
+    <form onSubmit={handleSubmit} style={{width:400,display:'flex',flexDirection:'column',
         justifyContent: 'center',margin:'0 auto'}} noValidate autoComplete="off">
 
         <TextField
@@ -87,13 +86,5 @@ const Profile = (props) => {
   </div>
  );
 };
-
-Profile.propTypes = {
-    onClick: PropTypes.func.isRequired,
-}
-
-Profile.defaultProps = {
-    onClick: () => alert('Save data clicked!')
-}
 
 export default Profile;

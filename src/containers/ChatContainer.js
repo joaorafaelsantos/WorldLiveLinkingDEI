@@ -4,17 +4,24 @@ import Chat from '../components/Chat/Chat';
 
 
 
-const mapStateToProps = ({ alumni }) => {
+const mapStateToProps = ({ alumni, auth }) => {
     return {
-        alumni
+        alumni,
+        auth
     }
 }
 
 class ChatContainer extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             alumniData: this.props.alumni.data,
+        }
+    }
+
+    componentWillMount() {
+        if (!this.props.auth.data.isAuth) {
+            this.props.history.push("/signin");
         }
     }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Filters from "../components/Filters/Filters";
-import { updateAlumni } from "../actions/alumni";
+import { updateAlumni, updateAlumniFilter } from "../actions/alumni";
 import { resetAlumni } from "../actions/alumni";
 
 const mapStateToProps = ({ alumni }) => {
@@ -11,6 +11,7 @@ const mapStateToProps = ({ alumni }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  updateAlumniFilter: filteredData => dispatch(updateAlumniFilter(filteredData)),
   updateAlumni: alumniData => dispatch(updateAlumni(alumniData)),
   resetAlumni: () => dispatch(resetAlumni())
 });
@@ -37,6 +38,23 @@ class FiltersContainer extends Component {
     });
   }
 
+  getFilteredAlumni(city, graduationYear, course) {
+    let filteredAlumni = [...this.state.defaultAlumni];
+
+    if (city) {
+      filteredAlumni = filteredAlumni.filter(alumni => alumni.location.city === city);
+    }
+    if (graduationYear) {
+      filteredAlumni = filteredAlumni.filter(alumni => alumni.course.startDate === parseInt(graduationYear));
+    }
+    if (course) {
+      filteredAlumni = filteredAlumni.filter(alumni => alumni.course.name === course);
+    }
+
+    return filteredAlumni
+  }
+
+
   handleClickApply() {
     // Apply all filters
     const {
@@ -44,31 +62,25 @@ class FiltersContainer extends Component {
       graduationYearValue: graduationYear,
       courseValue: course
     } = this.state;
-    let alumniData = [...this.state.defaultAlumni];
-    if (city) {
-      alumniData = alumniData.filter(alumni => {
-        return alumni.location.city === city;
-      });
-    }
-    if (graduationYear) {
-      alumniData = alumniData.filter(alumni => {
-        return alumni.graduation_year === parseInt(graduationYear);
-      });
-    }
-    if (course) {
-      alumniData = alumniData.filter(alumni => {
-        return alumni.degree === course;
-      });
-    }
 
-    if (!city && !graduationYear && !course) {
-      this.props.resetAlumni();
-    }
-    this.props.updateAlumni(alumniData);
+    let filteredAlumni = this.getFilteredAlumni(city, graduationYear, course);
+    this.props.updateAlumniFilter(filteredAlumni.map(alumni => alumni.id));
   }
 
   handleClickClear() {
-    this.props.resetAlumni();
+    const city = "";
+    const graduationYear = "";
+    const course = "";
+
+    this.setState({
+      ...this.state,
+      cityValue: city,
+      graduationYearValue: graduationYear,
+      courseValue: course
+    });
+
+    let filteredAlumni = this.getFilteredAlumni(city, graduationYear, course);
+    this.props.updateAlumniFilter(filteredAlumni.map(alumni => alumni.id));
   }
 
   render() {
