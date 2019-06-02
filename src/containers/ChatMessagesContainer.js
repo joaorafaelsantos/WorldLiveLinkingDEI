@@ -13,7 +13,7 @@ class ChatMessagesContainer extends Component {
 
   render() {
 
-    if (this.props.chat.data != "0") {
+    if (this.props.chat.data !== "0") {
 
 
       return (
@@ -28,7 +28,7 @@ class ChatMessagesContainer extends Component {
     } else {
       return (
         <div>
-          <div className="column is-6"><p>Choose a user to chat...</p></div>
+          <div className="column is-6" style={{position:'absolute',top:'20%',left:'50%'}}><p>Choose a user to chat...</p></div>
         </div>
       )
     }

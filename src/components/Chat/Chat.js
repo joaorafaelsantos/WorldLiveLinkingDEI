@@ -4,11 +4,6 @@ import ChatMessagesContainer from '../../containers/ChatMessagesContainer'
 import ChatSidebarContainer from '../../containers/ChatSidebarContainer'
 import './Chat.css';
 
-
-    
-
-
-
   const Chat = () => (
     <div className="row">
         <ChatSidebarContainer />
