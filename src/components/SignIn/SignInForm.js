@@ -22,7 +22,6 @@ export const SignInForm = props => {
         setFieldTouched(name, true, false)
     };
 
-
     return (
         <div>
             <Avatar style={{marginLeft:'44%',background:'#EF4D56',marginBottom:'10px'}}>
