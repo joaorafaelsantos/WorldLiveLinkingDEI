@@ -1,6 +1,9 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import './SignIn.css';
 
 
 export const SignInForm = props => {
@@ -21,43 +24,55 @@ export const SignInForm = props => {
 
 
     return (
-        <form
-            onSubmit={handleSubmit}
-        >
-            <TextField
-                required
-                name="username"
-                id="standard-username-input"
-                helperText={touched.username ? errors.username: ""}
-                error={touched.username && Boolean(errors.username)}
-                label="Username"
-                value={username}
-                onChange={change.bind(null, "username")}
-                margin="normal"
-                fullWidth
-            />
-            <TextField
-                required
-                name="password"
-                id="standard-password-input"
-                label="Password"
-                helperText={touched.password ? errors.password : ""}
-                error={touched.password && Boolean(errors.password)}
-                type="password"
-                value={password}
-                onChange={change.bind(null, "password")}
-                autoComplete="current-password"
-                margin="normal"
-                fullWidth
-            />
-            <div className="button">
-                <Button
-                    variant="contained"
-                    className="signin-button"
-                    type="submit">
-                    Sign in
-                </Button>
-            </div>
-        </form>
+        <div>
+            <Avatar style={{marginLeft:'44%',background:'#EF4D56',marginBottom:'10px'}}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5" style={{marginBottom:'8px'}}>
+                Sign in
+            </Typography>
+            <form
+                onSubmit={handleSubmit}
+            >
+                <TextField
+                    required
+                    name="username"
+                    id="standard-username-input"
+                    helperText={touched.username ? errors.username: ""}
+                    error={touched.username && Boolean(errors.username)}
+                    label="Email Address"
+                    value={username}
+                    onChange={change.bind(null, "username")}
+                    margin="normal"
+                    variant="outlined"
+                    autoFocus
+                    autoComplete="email"
+                    fullWidth
+                />
+                <TextField
+                    required
+                    name="password"
+                    id="standard-password-input"
+                    label="Password"
+                    helperText={touched.password ? errors.password : ""}
+                    error={touched.password && Boolean(errors.password)}
+                    type="password"
+                    value={password}
+                    onChange={change.bind(null, "password")}
+                    autoComplete="current-password"
+                    margin="normal"
+                    fullWidth
+                    variant="outlined"
+                />
+                <div className="button">
+                    <button
+                        variant="contained"
+                        className="signin-button"
+                        type="submit">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 };
