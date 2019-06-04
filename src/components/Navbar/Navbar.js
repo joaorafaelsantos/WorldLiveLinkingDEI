@@ -28,6 +28,17 @@ class Navbar extends Component {
         this.props.handleLogout();
     };
 
+
+    adminPanel(isadmin) {
+        if (isadmin) {
+            return (<Button color="inherit">
+                <Link to="/validatealumni" className="navbar-link">Management</Link>
+            </Button>)
+        }
+        else return null
+    }
+
+
     render() {
         const {isAuth} = this.props;
         const {isadmin} = this.props;
@@ -43,11 +54,7 @@ class Navbar extends Component {
                         isAuth ?
                             <div>
                                 <div style={{display: 'flex', alignItems: 'center'}}>
-                                    {isadmin &&
-                                    <Button color="inherit">
-                                        <Link to="/validatealumni" className="navbar-link">Management</Link>
-                                    </Button>
-                                    }
+                                    {this.adminPanel(isadmin)}
                                     <Button color="inherit">
                                         <Link to="/map" className="navbar-link">Map</Link>
                                     </Button>

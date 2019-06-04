@@ -79,7 +79,7 @@ export default function alumni(state = initialState, action) {
     case types.PROFILE_FETCH_SUCCESS:
       return {
         ...state,
-        data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile}},
+        data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile, isadmin: action.data.profile.isadmin==='true'}},
         isFetching: false,
         error: false
       };
