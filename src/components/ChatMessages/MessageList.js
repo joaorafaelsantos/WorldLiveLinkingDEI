@@ -91,7 +91,7 @@ class MessageList extends Component {
     render() {
         let messageNodes = this.state.messages.map((message, index) => {
             let mine = "mine";
-     if (message.from != this.state.id){
+     if (message.from !== this.state.id){
          mine = "";
      }
             return (

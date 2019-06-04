@@ -7,8 +7,6 @@ import '../ChatMessages/ConversationList.css'
 //import '../ChatMessages/Messenger.css'
 
 
-
-
 const ChatSidebar = ({ onClick, users }) => (
   
        
@@ -25,6 +23,7 @@ const ChatSidebar = ({ onClick, users }) => (
 <li key={user.id} className="conversation-title" onClick={() => onClick(user.id)}>
     <img className="conversation-photo" src="/assets/icon.png" alt="conversation" />
     {user.name}</li>
+
   
 </div>
 
