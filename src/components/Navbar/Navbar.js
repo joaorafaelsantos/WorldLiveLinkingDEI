@@ -52,9 +52,6 @@ class Navbar extends Component {
                                         <Link to="/map" className="navbar-link">Map</Link>
                                     </Button>
                                     <Button color="inherit">
-                                        <Link to="/chat2" className="navbar-link">Chat</Link>
-                                    </Button>
-                                    <Button color="inherit">
                                         <Link to="/chat" className="navbar-link">Chat</Link>
                                     </Button>
                                     <AccountCircle/>
