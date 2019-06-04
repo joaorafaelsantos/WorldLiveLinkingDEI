@@ -10,12 +10,13 @@ import "./App.css";
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import ProfileValidationContainer from "./containers/ProfileValidationContainer";
+import ChatContainer2 from "./containers/ChatContainer2";
 
 const theme = createMuiTheme({
   palette: {
      primary: {
         light: '#fff',
-        main: '#F44336',
+        main: '#8c2d19',
         dark: '#000'
      },
      secondary: {
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path="/profile" component={ProfileContainer}/>
           <Route path="/map" component={MapContainer}/>
           <Route path="/chat" component={ChatContainer}/>
+          <Route path="/chat2" component={ChatContainer2}/>
           <Route path="/validatealumni" component={ProfileValidationContainer}/>
         </div>
       </div>

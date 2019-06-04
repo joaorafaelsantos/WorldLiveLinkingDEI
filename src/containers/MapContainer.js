@@ -79,8 +79,8 @@ class MapContainer extends Component {
                 "infoboxOption": {
                     title: alumni.name,
                     description: `<img  width="35%"></img>
-                        <p>${alumni.course.name} graduated in ${alumni.course.university}</p> 
-                        <p>Working at ${alumni.company}</p> 
+                        <p>Graduate: ${alumni.course.name}</p> 
+                        <p>Working at ${alumni.company.name}</p>
                         <p>${alumni.location.city}, ${alumni.course.endDate}</p>
                         <button style='display: block;background-color: #7ed6df;color: #130f40;
                                 padding:0.5rem 0.9rem;cursor:pointer;border:none;

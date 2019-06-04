@@ -2,10 +2,11 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 import ChatMessagesContainer from '../../containers/ChatMessagesContainer'
 import ChatSidebarContainer from '../../containers/ChatSidebarContainer'
-import './Chat.css';
+
+import '../ChatMessages/Messenger.css';
 
   const Chat = () => (
-    <div className="row">
+    <div className="messenger">
         <ChatSidebarContainer />
         <ChatMessagesContainer />
     </div>
