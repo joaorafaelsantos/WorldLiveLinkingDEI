@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { updateChatUser } from '../actions/chat';
 import { alumniFetchData } from '../actions/alumni';
 
+import '../components/ChatMessages/Messenger.css'
+
 const mapStateToProps = ({ chat, alumni }) => {
     return {
         chat,
@@ -85,7 +87,10 @@ class ChatSidebarContainer extends Component {
 
     render() {
         return (
+            <div class='scrollable sidebar'>
             <ChatSidebar onClick={this.changeChatUserId} users={this.props.alumni.data} />
+           
+            </div>
         )
     }
 }

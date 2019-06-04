@@ -20,6 +20,7 @@ class ChatContainer extends Component {
     }
 
     componentWillMount() {
+        
         if (!this.props.auth.data.isAuth) {
             this.props.history.push("/signin");
         }

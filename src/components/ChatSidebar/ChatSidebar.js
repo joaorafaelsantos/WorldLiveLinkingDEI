@@ -1,15 +1,40 @@
 import React from 'react';
 import './ChatSidebar.css';
+import '../ChatMessages/ConversationListItem.css';
+import shave from 'shave';
+//import '../ChatMessages/Toolbar.css'
+import '../ChatMessages/ConversationList.css'
+//import '../ChatMessages/Messenger.css'
+
+
+
 
 const ChatSidebar = ({ onClick, users }) => (
-    <div className="chat-sidebar-container">
-        <input type="text" placeholder="Search Members" name="search" className="search-box" />
-        <ul className="users-group">
-            {users.map((user) => (<li key={user.id} className="chat-sidebar-item" onClick={() => onClick(user.id)}>
-            <i className="fas fa-user"></i>
-            {user.name}</li>))}
-        </ul>
-    </div>
+  
+       
+
+ 
+
+
+    <div className="conversation-list">
+
+{users.map((user) => (
+   
+    
+<div className="conversation-list-item">
+<li key={user.id} className="conversation-title" onClick={() => onClick(user.id)}>
+    <img className="conversation-photo" src="/assets/icon.png" alt="conversation" />
+    {user.name}</li>
+  
+</div>
+
+))}
+  
+</div>
+
+
+
+
 );
 
 // ChatSidebar.propTypes = {

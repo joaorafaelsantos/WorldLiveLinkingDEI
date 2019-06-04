@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import trim from 'trim';
 import './ChatMessages.css';
 import {connect} from 'react-redux';
+import '../ChatMessages/Compose.css';
 
 const mapStateToProps = ({chat, auth}) => {
     return {
@@ -85,23 +86,20 @@ class ChatMessages extends Component {
 
     render() {
         return (
-
-            <div className="card">
-                <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={this.handleSubmit}>
+         
+            <div className="compose">
+                <form  onSubmit={this.handleSubmit}>
           <textarea
-              className="container"
+              className="compose-input"
               placeholder="Type a message"
               cols="100"
               onChange={this.onChange}
               onKeyUp={this.onKeyup}
               value={this.state.message}>
           </textarea>
-                    <button style={{
-                        background: 'green', color: 'white', width: '4rem',
-                        marginLeft: '26.2rem', padding: '5px 10px', cursor: 'pointer'
-                    }} type="submit">
-                        Send
-                    </button>
+               
+                      
+                
                 </form>
             </div>
         )

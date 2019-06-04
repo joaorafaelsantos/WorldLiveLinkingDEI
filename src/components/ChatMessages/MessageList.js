@@ -4,6 +4,11 @@ import './ChatMessages.css';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {updateArrayUsers} from '../../actions/chat';
+//import '../ChatMessages/ConversationListItem.css';
+
+
+import '../ChatMessages/Messenger.css';
+
 
 
 const mapStateToProps = ({chat, auth}) => {
@@ -85,25 +90,35 @@ class MessageList extends Component {
 
     render() {
         let messageNodes = this.state.messages.map((message, index) => {
+            let mine = "mine";
+     if (message.from != this.state.id){
+         mine = "";
+     }
             return (
-                <div key={index} className="card">
-                    <div className="container img chat-message-write">
-                        <div className="fixed">
-                            <img src={message.profilePicUrl} alt="profile-pic"></img>
-                        </div>
-
-                        <div className="flex-item">
-                            <div>{message.name}: <Message message={message.message}/></div>
-                            <p className="time-right">{message.timeStamp}</p>
-                        </div>
+                <div className={[
+                    'message',
+                    `${mine ? 'mine' : ''}`
+                  ].join(' ')}>
+                    <div className="bubble-container">
+                      <div className="bubble" title={message.timeStamp}>
+                      <Message message={message.message}/>
+                      </div>
                     </div>
-                </div>
+                  </div>
+                            
+                            
+                            
+                   
             )
         });
         return (
-            <div className="cardScroll">
+            //<div className="toolbar">
+              //  <h1 class="toolbar-title" align="center">Messenger</h1>
+                <div className="message-list">
+
                 {messageNodes}
             </div>
+           // </div>
         );
     }
 }
