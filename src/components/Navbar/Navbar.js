@@ -38,6 +38,7 @@ class Navbar extends Component {
                 <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
                     <IconButton color="inherit" aria-label="Menu">
                         <Link to="/" className="navbar-link"><img src="../../../assets/logo.png" height="42"></img></Link>
+>>>>>>> master
                     </IconButton>
                     {
                         isAuth ?

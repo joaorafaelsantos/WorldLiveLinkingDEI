@@ -29,8 +29,9 @@
     text-align: center;
 }
 .button {
-    width: 70%;
-    margin: 0 auto;
+    width: 100%;
+    
+    /* margin: 0 auto; */
 }
 
 
@@ -42,4 +43,19 @@ ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+.signin-button{
+    width: 100%;
+    font-size: 18px;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    padding: 12px 0px;
+    background-color: rgb(18, 33, 116,0.8);
+    color:rgb(204, 248, 233);
+}
+
+.signin-button:hover{
+    background-color:rgba(18, 33, 116, 1);
 }
