@@ -70,25 +70,33 @@ class MapContainer extends Component {
     }
 
     parseInfoboxes(alumniData) {
+
+
+
+
         const infoboxesWithPushPins = alumniData
             .filter(alumni => this.props.alumni.filtered.includes(alumni.id))
-            .map((alumni) => (
-            {
-                "location": [parseFloat(alumni.location.latitude), parseFloat(alumni.location.longitude)],
-                "addHandler": "click",
-                "infoboxOption": {
-                    title: alumni.name,
-                    description: `<img  width="35%"></img>
-                        <p>Graduate: ${alumni.course.name}</p> 
-                        <p>Working at ${alumni.company.name}</p>
-                        <p>${alumni.location.city}, ${alumni.course.endDate}</p>`,
-                    maxHeight: 250
-                },
-                "pushPinOption": {
-                    title: alumni.name,
-                    description: 'Pushpin'
-                },
-            })
+            .map((alumni) => {
+                let description = "";
+
+                if (alumni.course.name) {description += `<p>Graduate: ${alumni.course.name}<\p>`}
+                if (alumni.company.name) {description += `<p>Working at: ${alumni.company.name}</p>`}
+                if (alumni.location.city) {description += `<p>${alumni.location.city}</p>`}
+                return (
+                    {
+                        "location": [parseFloat(alumni.location.latitude), parseFloat(alumni.location.longitude)],
+                        "addHandler": "click",
+                        "infoboxOption": {
+                            title: alumni.name,
+                            description: description,
+                            maxHeight: 250
+                        },
+                        "pushPinOption": {
+                            title: alumni.name,
+                            description: 'Pushpin'
+                        },
+                    })
+            }
         );
 
         this.setState({ infoboxesWithPushPins })
