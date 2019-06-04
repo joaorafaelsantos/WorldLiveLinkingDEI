@@ -39,7 +39,7 @@ export const SignInForm = props => {
                     id="standard-username-input"
                     helperText={touched.username ? errors.username: ""}
                     error={touched.username && Boolean(errors.username)}
-                    label="Email Address"
+                    label="Username"
                     value={username}
                     onChange={change.bind(null, "username")}
                     margin="normal"
