@@ -19,12 +19,12 @@ const ChatSidebar = ({ onClick, users }) => (
 {users.map((user) => (
    
     
-<div className="conversation-list-item">
-<li key={user.id} className="conversation-title" onClick={() => onClick(user.id)}>
-    <img className="conversation-photo" src="/assets/icon.png" alt="conversation" />
-    {user.name}</li>
-
-  
+<div className="conversation-list-item"  key={user.id} onClick={() => onClick(user.id)}>
+        <img className="conversation-photo" src="/assets/icon.png" alt="conversation" />
+        <div className="conversation-info">
+            <h1 className="conversation-title">{user.name}</h1>
+            <p className="conversation-snippet">...</p>
+        </div>
 </div>
 
 ))}
