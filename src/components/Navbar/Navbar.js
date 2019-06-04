@@ -37,7 +37,7 @@ class Navbar extends Component {
             <AppBar position="fixed">
                 <Toolbar style={{display: 'flex', justifyContent: 'space-between'}}>
                     <IconButton color="inherit" aria-label="Menu">
-                        <Link to="/" className="navbar-link">WorldLiveLinking</Link>
+                    <Link to="/" className="navbar-link"><img src="../../../assets/logo.png" height="42"></img></Link>
                     </IconButton>
                     {
                         isAuth ?
