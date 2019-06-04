@@ -81,10 +81,7 @@ class MapContainer extends Component {
                     description: `<img  width="35%"></img>
                         <p>Graduate: ${alumni.course.name}</p> 
                         <p>Working at ${alumni.company.name}</p>
-                        <p>${alumni.location.city}, ${alumni.course.endDate}</p>
-                        <button style='display: block;background-color: #7ed6df;color: #130f40;
-                                padding:0.5rem 0.9rem;cursor:pointer;border:none;
-                                border-radius:5rem;margin-left:6rem;'>Send Message</button>`,
+                        <p>${alumni.location.city}, ${alumni.course.endDate}</p>`,
                     maxHeight: 250
                 },
                 "pushPinOption": {
