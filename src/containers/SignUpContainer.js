@@ -40,7 +40,7 @@ class SignUpContainer extends Component {
   }
 
   render() {
-    return <SignUp onClick={this.handleClick} />;
+    return <SignUp onClick={this.handleClick} error={this.props.auth.registerError}/>;
   }
 }
 

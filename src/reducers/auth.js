@@ -63,13 +63,13 @@ export default function alumni(state = initialState, action) {
         ...state,
         data: {...state.data, ...action.data},
         isFetching: false,
-        error: false
+        registerError: false
       };
     case types.REGISTER_FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
-        error: true
+        registerError: true
       };
     case types.PROFILE_FETCH_REQUEST:
       return {
@@ -86,15 +86,13 @@ export default function alumni(state = initialState, action) {
     case types.PROFILE_FETCH_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        error: true
+        isFetching: false
       };
     case types.PROFILE_UPDATE_SUCCESS:
       return {
         ...state,
         data: {...state.data, ...action.data, profile: {...state.data.profile, ...action.data.profile}},
-        isFetching: false,
-        error: true
+        isFetching: false
       };
     case types.AUTH_RESET:
       return {

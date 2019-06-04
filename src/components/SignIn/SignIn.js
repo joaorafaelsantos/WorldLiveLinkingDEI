@@ -31,12 +31,13 @@ export default class SignIn extends Component {
             username: username,
             password: password
         };
+
         return (<div>
             <Grid container justify="center">
                 <Grid item xs={4}>
                     <Paper className="signin-box">
                         <Formik
-                            render={props => <SignInForm {...props}/>}
+                            render={props => <SignInForm {...props} error={this.props.error}/>}
                             initialValues={values}
                             validationSchema={validationSchema}
                             onSubmit={this.props.onClick}

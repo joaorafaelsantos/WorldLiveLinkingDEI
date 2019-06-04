@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import './SignIn.css';
+import Grid from "@material-ui/core/Grid";
 
 
 export const SignInForm = props => {
@@ -33,6 +34,11 @@ export const SignInForm = props => {
             <form
                 onSubmit={handleSubmit}
             >
+
+                <p style={{color: "red"}} hidden={!props.error}>
+                    The username and password that you entered don't match.
+                </p>
+
                 <TextField
                     required
                     name="username"

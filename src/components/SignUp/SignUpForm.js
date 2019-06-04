@@ -24,6 +24,10 @@ export const SignUpForm = props => {
         <form
             onSubmit={handleSubmit}
         >
+            <p style={{color: "red"}} hidden={!props.error}>
+                This username could not be registered
+            </p>
+
             <TextField
                 required
                 name="name"

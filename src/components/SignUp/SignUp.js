@@ -49,7 +49,7 @@ class SignUp extends Component {
                 <Grid item xs={4}>
                     <Paper className="signup-box">
                         <Formik
-                            render={props => <SignUpForm {...props}/>}
+                            render={props => <SignUpForm {...props} error={this.props.error}/>}
                             initialValues={values}
                             validationSchema={validationSchema}
                             onSubmit={this.props.onClick}

@@ -38,7 +38,7 @@ class SignInContainer extends Component {
   }
 
   render() {
-    return <SignIn onClick={this.handleClick} />;
+    return <SignIn onClick={this.handleClick} error={this.props.auth.error}/>;
   }
 }
 
