@@ -155,7 +155,7 @@ export function profileFetchData(url = '/alumni/getloggeduserinfo') {
     };
 }
 
-export function registerFetchData(registration, url = '/alumni') {
+export function registerFetchData(registration, url = '/createalumni') {
     return (dispatch) => {
         dispatch(registerIsFetching(true));
 
